@@ -10,9 +10,9 @@ class Heap
 	public int getCapacity() { return this.capacity; }
 	public int getHeapSize() { return this.heapSize; }
 
-	public int left(int root) { return (root*2)+1; } 
-	public int right(int root) { return (root*2)+2; }
-	public int parent(int root) { return (root-1)/2; }
+	private int left(int root) { return (root*2)+1; } 
+	private int right(int root) { return (root*2)+2; }
+	private int parent(int root) { return (root-1)/2; }
 
 	Heap(String heapType, int[] arr)
 	{
