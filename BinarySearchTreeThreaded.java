@@ -28,7 +28,7 @@ class Tree
 			insertIntoTree(root, val);
 	}
 
-	public void insertIntoTree(Node root, int val)
+	private void insertIntoTree(Node root, int val)
 	{
 		if (val < root.data && root.left == null)
 		{
@@ -46,40 +46,41 @@ class Tree
 			insertIntoTree(root.right, val);
 	}
 
+	private Node transplant(Node parent, Node curr, Node replace)
+	{
+		if (parent.left == curr)
+			parent.left = replace;
+		else
+			parent.right = replace;
+		return parent;
+	}
+
 	public String delete(int val)
 	{
 		Node curr = searchNode(val);
 		if (curr == null) return "Node unavailable";
 		if (curr.left == null && curr.right == null) //leaf node
 		{
-			if (curr.parent.left == curr) curr.parent.left = null;
-			else curr.parent.right = null;
+			curr.parent = transplant(curr.parent,curr,null);
 			return "Success";
 		}
 		else if (curr.left == null) //single child
 		{
-			if (curr.parent.right == curr) curr.parent.right = curr.right;
-			else curr.parent.left = curr.right;
+			curr.parent = transplant(curr.parent,curr,curr.right);
 			return "Success";
 		}
 		else if (curr.right == null) //single child
 		{
-			if (curr.parent.right == curr) curr.parent.right = curr.right;
-			else curr.parent.left = curr.right;
+			curr.parent = transplant(curr.parent,curr,curr.left);
 			return "Success";
 		}
 		//double children, replacing with successor strategy
 		Node successorNode = searchNode(getSuccessor(curr.data));
-		if (successorNode.parent.left == successorNode) 
-			successorNode.parent.left = successorNode.right;
-		else 
-			successorNode.parent.right = successorNode.right;
-		if (curr == root) root = successorNode;
+		successorNode.parent = transplant(successorNode.parent,successorNode,successorNode.right);
+		if (curr == root)
+			root = successorNode;
 		else
-		{
-			if (curr.parent.left == curr) curr.parent.left = successorNode;
-			else curr.parent.right = successorNode;
-		}
+			curr.parent = transplant(curr.parent,curr,successorNode);
 		successorNode.left = curr.left;
 		successorNode.right = curr.right;
 		return "Success";
@@ -104,7 +105,7 @@ class Tree
 		return getTreeHeight(root);
 	}
 
-	public int getTreeHeight(Node root)
+	private int getTreeHeight(Node root)
 	{
 		if (root == null)
 			return -1;
@@ -128,7 +129,7 @@ class Tree
 		return nodeCount("nonleaf",root);
 	}
 
-	public int nodeCount(String type, Node root)
+	private int nodeCount(String type, Node root)
 	{
 		if (root == null)
 			return 0;
@@ -146,7 +147,7 @@ class Tree
 		printPreOrder(root);
 	}
 
-	public void printPreOrder(Node root)
+	private void printPreOrder(Node root)
 	{
 		if (root != null)
 		{
@@ -161,7 +162,7 @@ class Tree
 		printInOrder(root);
 	}
 
-	public void printInOrder(Node root)
+	private void printInOrder(Node root)
 	{
 		if (root != null)
 		{
@@ -176,7 +177,7 @@ class Tree
 		printPostOrder(root);
 	}
 
-	public void printPostOrder(Node root)
+	private void printPostOrder(Node root)
 	{
 		if (root != null)
 		{
