@@ -1,0 +1,25 @@
+digraph G {
+node [shape = record, height = .1, color = "green"];
+32[label = "<L> |<D> 32|<R> "];
+34[label = "<L> |<D> 34|<R> "];
+36[label = "<L> |<D> 36|<R> "];
+38[label = "<L> |<D> 38|<R> "];
+50[label = "<L> |<D> 50|<R> "];
+44[label = "<L> |<D> 44|<R> "];
+42[label = "<L> |<D> 42|<R> ",fontcolor="red"];
+46[label = "<L> |<D> 46|<R> ",fontcolor="red"];
+"32":R -> "34":D;
+"34":L -> "32":D[style=dashed];
+"34":R -> "36":D;
+"36":L -> "34":D[style=dashed];
+"36":R -> "38":D;
+"38":L -> "36":D[style=dashed];
+"38":R -> "50":D;
+"50":L -> "44":D;
+"44":L -> "42":D;
+"44":R -> "46":D;
+"42":L -> "38":D[style=dashed];
+"42":R -> "44":D[style=dashed];
+"46":L -> "44":D[style=dashed];
+"46":R -> "50":D[style=dashed];
+}
