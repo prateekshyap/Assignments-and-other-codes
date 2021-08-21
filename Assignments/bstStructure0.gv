@@ -1,4 +1,4 @@
-digraph G {
+digraph G{
 node [shape = record, height = .1, color = "black"];
 18[label = "<L> |<D> 18|<R> "];
 10[label = "<L> |<D> 10|<R> "];
