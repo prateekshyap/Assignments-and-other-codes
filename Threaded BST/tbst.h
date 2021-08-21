@@ -226,7 +226,7 @@ List BinarySearchTree :: allElementsBetween(int k1, int k2)
 	/*temp points to root
 	k1Node and k2Node are initially null*/
 	TreeNode * temp = root, * k1Node = nullptr, * k2Node = nullptr;
-	while (temp != nullptr && temp->data != k1) //till temp is not null and the data is not equal to k1
+	while (temp != nullptr) //till temp is not null and the data is not equal to k1
 	{
 		if (k1 < temp->data) //if k1 is less than temp
 		{
@@ -235,16 +235,16 @@ List BinarySearchTree :: allElementsBetween(int k1, int k2)
 		}
 		else //otherwise
 		{
-			if (k1Node == nullptr || (k1Node->data >= temp->data && temp->data >= k1)) k1Node = temp; //update k1node
+			if ((k1Node->data >= temp->data && temp->data >= k1)) k1Node = temp; //update k1node
 			temp = temp->rightThread == true ? nullptr : temp->right; //move temp to right
 		}
 	}
 	temp = root; //reset temp
-	while (temp != nullptr && temp->data != k2) //till temp is not null and the data is not equal to k2
+	while (temp != nullptr) //till temp is not null and the data is not equal to k2
 	{
 		if (k2 < temp->data) //if k2 is less than temp
 		{
-			if (k2Node == nullptr || (k2Node->data <= temp->data && temp->data <= k2)) k2Node = temp; //update k2node
+			if ((k2Node->data <= temp->data && temp->data <= k2)) k2Node = temp; //update k2node
 			temp = temp->leftThread == true ? nullptr : temp->left; //mode temp to left
 		}
 		else //otherwise
