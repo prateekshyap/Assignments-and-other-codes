@@ -1,0 +1,130 @@
+Execution started at: Tue Aug 31 11:23:38 2021
+
+
+1
+21
+Inserting 21
+
+
+1
+26
+Inserting 26
+
+
+1
+30
+Inserting 30
+
+
+1
+9
+Inserting 9
+
+
+1
+4
+Inserting 4
+
+
+4
+Printing tree with file name- struct0.png
+Graphviz file can be found with file name- bstStructure0.gv
+
+
+1
+14
+Inserting 14
+
+
+4
+Printing tree with file name- struct1.png
+Graphviz file can be found with file name- bstStructure1.gv
+
+
+1
+28
+Inserting 28
+
+
+4
+Printing tree with file name- struct2.png
+Graphviz file can be found with file name- bstStructure2.gv
+
+
+1
+18
+Inserting 18
+
+
+4
+Printing tree with file name- struct3.png
+Graphviz file can be found with file name- bstStructure3.gv
+
+
+1
+15
+Inserting 15
+
+
+4
+Printing tree with file name- struct4.png
+Graphviz file can be found with file name- bstStructure4.gv
+
+
+1
+10
+Inserting 10
+
+
+4
+Printing tree with file name- struct5.png
+Graphviz file can be found with file name- bstStructure5.gv
+
+
+1
+2
+Inserting 2
+
+
+4
+Printing tree with file name- struct6.png
+Graphviz file can be found with file name- bstStructure6.gv
+
+
+1
+3
+Inserting 3
+
+
+4
+Printing tree with file name- struct7.png
+Graphviz file can be found with file name- bstStructure7.gv
+
+
+1
+7
+Inserting 7
+
+
+4
+Printing tree with file name- struct8.png
+Graphviz file can be found with file name- bstStructure8.gv
+
+
+1
+14
+Inserting 14
+
+Duplicate Value Exception
+
+
+4
+Printing tree with file name- struct9.png
+Graphviz file can be found with file name- bstStructure9.gv
+
+
+5
+Quit
+
+Execution ended at: Tue Aug 31 11:23:52 2021
+
