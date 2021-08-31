@@ -280,7 +280,14 @@ void AVLTree :: deleteK(int x)
 			newCurrNode = deleteLeafNode(succ,parentSucc); //detach the successor by calling leaf deletion function and store in the pointer
 		else //otherwise
 			newCurrNode = deleteNodeWithSingleChild(succ,parentSucc); //detach the successor by calling single child deletion function and store in the pointer
-
+		newCurrNode->bF = node->bF;
+		newCurrNode->left = node->left;
+		newCurrNode->right = node->right;
+		parent = getParent(node);
+		if (parent->left == node)
+			parent->left = newCurrNode;
+		else
+			parent->right = newCurrNode;
 	}
 }
 
@@ -367,6 +374,25 @@ TreeNode * AVLTree :: deleteLeafNode(TreeNode * node, TreeNode * parent)
 					rotate->bF = 0;
 				}
 			}
+			else if (rotate->bF == 0)
+			{
+				if (newBF == -1)
+				{
+					temp = rotate;
+					ancestor->left = rotate->right;
+					rotate->right = ancestor;
+					//ancestor->bF = 0;
+					rotate->bF = newBF;
+				}
+				else //if (newBF == 1)
+				{
+					temp = rotate;
+					ancestor->right = rotate->left;
+					rotate->left = ancestor;
+					//ancestor->bF = 0;
+					rotate->bF = newBF;
+				}
+			}
 			else if (rotate->bF == newBF)
 			{
 				if (newBF == -1)
@@ -405,62 +431,116 @@ TreeNode * AVLTree :: deleteLeafNode(TreeNode * node, TreeNode * parent)
 
 TreeNode * AVLTree :: deleteNodeWithSingleChild(TreeNode * node, TreeNode * parent)
 {
-	/*if (node->left == nullptr || node->leftThread == true) //if right child is present
+	TreeNode * rotate = nullptr, * temp = nullptr;
+	if (node->left == nullptr) //if right child is present
 	{
-		if (parent == nullptr) //if parent is null
-		{
-			TreeNode * succ = leftMost(node->right); //find the successor of node
-			if (succ->leftThread == true) //if its left thread is present, delete it
-			{
-				succ->leftThread = false;
-				succ->left = nullptr;
-			}
-			root = root->right; //move root
-		}
+		if (parent == root) //if parent is root
+			root->right = node->right; //move root
 		else if (parent->right == node) //if node is right child
-		{
 			parent->right = node->right; //store node's right in parent's right
-			TreeNode * succ = leftMost(parent->right); //find the successor of node
-			if (succ->leftThread == true) succ->left = parent; //if its left thread is present then point it to parent
-		}
 		else //if node is left child
-		{
-			parent->left = node->right; //store node's right in parent's left
-			TreeNode * succ = leftMost(parent->left); //find the successor of node
-			succ->left = node->left; //store node's left in successor's left
-			succ->leftThread = node->leftThread; //store node's left thread in successor's left thread
-		}			
+			parent->left = node->right; //store node's right in parent's left		
 	}
-	else if (node->right == nullptr || node->rightThread == true) //if left child is present
+	else if (node->right == nullptr) //if left child is present
 	{
-		if (parent == nullptr) //if parent is null
-		{
-			TreeNode * predec = rightMost(node->left); //find the successor of node
-			if (predec->rightThread == true) //if its right thread is present, delete it
-			{
-				predec->rightThread = false;
-				predec->right = nullptr;
-			}
-			root = root->left; //move root
-		}
+		if (parent == root) //if parent is root
+			root->right = node->left; //move root
 		else if (parent->left == node) //if node is left child
-		{
 			parent->left = node->left; //store node's left in parent's left
-			TreeNode * predec = rightMost(parent->left); //find the predecessor of node
-			if (predec->rightThread == true) predec->right = parent; //if its right thread is present then point it to parent
-		}
 		else //if node is right child
-		{
 			parent->right = node->left; //store node's left in parent's right
-			TreeNode * predec = rightMost(parent->right); //find the predecessor of node
-			predec->right = node->right; //store node's right in successor's right
-			predec->rightThread = node->rightThread; //store node's right thread in successor's right thread
-		}
 	}
+	while (stack.viewTop() != root)
+	{
+		TreeNode * ancestor = stack.pop();
+		TreeNode * tree = stack.viewTop();
+		int newBF = node->data < ancestor->data ? 1 : -1;
+		if (ancestor->bF == newBF)
+		{
+			ancestor->bF = 0;
+			continue;
+		}
+		else if (ancestor->bF == 0)
+		{
+			ancestor->bF = -1*newBF;
+			node->left = node->right = nullptr;
+			return node;
+		}
+		else //if (ancestor->bF == -1*newBF)
+		{
+			rotate = ancestor->bF == 1 ? ancestor->left : ancestor->right;
+			if (rotate->bF == -1*newBF)
+			{
+				if (newBF == -1)
+				{
+					temp = rotate;
+					ancestor->left = rotate->right;
+					rotate->right = ancestor;
+					ancestor->bF = 0;
+					rotate->bF = 0;
+				}
+				else //if (newBF == 1)
+				{
+					temp = rotate;
+					ancestor->right = rotate->left;
+					rotate->left = ancestor;
+					ancestor->bF = 0;
+					rotate->bF = 0;
+				}
+			}
+			else if (rotate->bF == 0)
+			{
+				if (newBF == -1)
+				{
+					temp = rotate;
+					ancestor->left = rotate->right;
+					rotate->right = ancestor;
+					//ancestor->bF = 0;
+					rotate->bF = newBF;
+				}
+				else //if (newBF == 1)
+				{
+					temp = rotate;
+					ancestor->right = rotate->left;
+					rotate->left = ancestor;
+					//ancestor->bF = 0;
+					rotate->bF = newBF;
+				}
+			}
+			else if (rotate->bF == newBF)
+			{
+				if (newBF == -1)
+				{
+					temp = rotate->right;
+					rotate->right = temp->left;
+					temp->left = rotate;
+					ancestor->left = temp->right;
+					temp->right = ancestor;
+					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
+					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
+					temp->bF = 0;
+				}
+				else //if (newBF == 1)
+				{
+					temp = rotate->left;
+					rotate->left = temp->right;
+					temp->right = rotate;
+					ancestor->right = temp->left;
+					temp->left = ancestor;
+					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
+					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
+					temp->bF = 0;
+				}
+			}
+		}
+		if (ancestor == tree->right)
+			tree->right = temp;
+		else
+			tree->left = temp;
+	}
+	/*reset the node and return*/
 	node->left = node->right = nullptr;
-	node->leftThread = node->rightThread = false;
-	return node;*/
-	return nullptr;
+	return node;
 }
 
 TreeNode * AVLTree :: leftMost(TreeNode * node)
