@@ -58,3 +58,23 @@ public:
 
 	friend class Queue;
 };
+
+/*
+* Node for Stack
+* Contains a reference to TreeNode, a self reference
+*/
+class StackNode
+{
+private:
+	TreeNode * treeNode;
+	StackNode * next;
+
+public:
+	StackNode(TreeNode * node)
+	{
+		treeNode = node;
+		next = nullptr;
+	}
+
+	friend class Stack;
+};

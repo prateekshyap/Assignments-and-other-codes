@@ -12,6 +12,25 @@ public:
 	void trim(); //function to delete the dummy node
 };
 
+class Stack
+{
+private:
+	int size; //size of the stack
+
+public:
+	StackNode * top; //top pointer of stack
+	Stack()
+	{
+		top = nullptr; //initialize to null
+		size = 0; //initialize to 0
+	}
+	void push(TreeNode *); //function to push
+	TreeNode * pop(); //function to pop
+	bool isEmpty(); //function to check if the stack is empty
+	int getSize(); //function to get the size of the stack
+	TreeNode * viewTop(); //function to get the top
+};
+
 class AVLTree
 {
 public:
@@ -36,18 +55,18 @@ public:
 	bool search(int); //search
 	void print(); //print tree
 	void deleteK(int); //delete
-	TreeNode * searchNode(int); // search a node
 
 private:
 	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
 	TreeNode * copyNodes(TreeNode *, unordered_map<TreeNode *, TreeNode *> &); //function called by the copy constructor
-	/*void reduceSubtreeCount(TreeNode *); //function to reduce the subtree count during deletion
-	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
+	TreeNode * searchNode(int); // search a node
 	TreeNode * deleteLeafNode(TreeNode *,TreeNode *); //function to delete the leaf node
 	TreeNode * deleteNodeWithSingleChild(TreeNode *,TreeNode *); //function to delete a node with single child
+	TreeNode * getParent(TreeNode *); //function to find the parent of a given node
 	TreeNode * leftMost(TreeNode *); //function to find the leftmost or the smallest node
 	TreeNode * rightMost(TreeNode *); //function to find the rightmost or the largest node
-	TreeNode * getParent(TreeNode *); //function to find the parent of a given node
+	/*void reduceSubtreeCount(TreeNode *); //function to reduce the subtree count during deletion
+	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
 	*/
 };
 
