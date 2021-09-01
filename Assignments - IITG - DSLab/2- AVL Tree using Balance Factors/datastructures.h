@@ -1,17 +1,3 @@
-class List
-{
-public:
-	ListNode * head, * tail; //head and tail pointers
-	List()
-	{
-		/*create a dummy node and point both head and tail to it*/
-		head = new ListNode(0);
-		tail = head;
-	}
-	void addNode(TreeNode *); //function to add a new node at the end of the list
-	void trim(); //function to delete the dummy node
-};
-
 class Stack
 {
 private:
@@ -43,9 +29,9 @@ public:
 	AVLTree(const AVLTree &avlt) //copy constructor
 	{
 		if (avlt.root->right == nullptr) //store null if root is null
-			root = nullptr;
+			root->right = nullptr;
 		unordered_map<TreeNode *, TreeNode *> treeNodeMap; //create a hashmap to map the nodes of two trees
-		root = copyNodes(avlt.root,treeNodeMap); //call the copy nodes function
+		root->right = copyNodes(avlt.root->right,treeNodeMap); //call the copy nodes function
 	}
 	~AVLTree()
 	{
@@ -58,16 +44,17 @@ public:
 
 private:
 	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
-	TreeNode * copyNodes(TreeNode *, unordered_map<TreeNode *, TreeNode *> &); //function called by the copy constructor
-	TreeNode * searchNode(int); // search a node
-	TreeNode * deleteLeafNode(TreeNode *,TreeNode *); //function to delete the leaf node
-	TreeNode * deleteNodeWithSingleChild(TreeNode *,TreeNode *); //function to delete a node with single child
+	TreeNode * searchNode(int); //search a node
+	TreeNode * deleteNodeWithNullChildren(TreeNode *, TreeNode *); //function to delete leaf node or nodes with single child
 	TreeNode * getParent(TreeNode *); //function to find the parent of a given node
 	TreeNode * leftMost(TreeNode *); //function to find the leftmost or the smallest node
 	TreeNode * rightMost(TreeNode *); //function to find the rightmost or the largest node
-	/*void reduceSubtreeCount(TreeNode *); //function to reduce the subtree count during deletion
-	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
-	*/
+	TreeNode * rotateLL(TreeNode *, TreeNode *, int, int); //function for LL rotation
+	TreeNode * rotateRR(TreeNode *, TreeNode *, int, int); //function for RR rotation
+	TreeNode * rotateLR(TreeNode *, TreeNode *, int, int); //function for LR rotation
+	TreeNode * rotateRL(TreeNode *, TreeNode *, int, int); //function for RL rotation
+	void transplant(TreeNode *, TreeNode *, TreeNode *); //function to attach a subtree to main tree
+	TreeNode * copyNodes(TreeNode *, unordered_map<TreeNode *, TreeNode *> &); //function called by the copy constructor
 };
 
 class Queue

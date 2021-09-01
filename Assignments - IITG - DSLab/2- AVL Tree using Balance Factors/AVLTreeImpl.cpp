@@ -7,13 +7,11 @@ using namespace std;
 #include<exception>
 #include<unordered_map>
 #include<ctime>
-//#include<bits/stdc++.h>
 
 //header files created for various tasks
 #include"nodes.h" // contains all the node structures
 #include"datastructures.h" //contains all the data structures
-/*next 4 contain the functions for respective data structures*/
-#include"list.h"
+/*next 3 contain the functions for respective data structures*/
 #include"queue.h"
 #include"stack.h"
 #include"avlt.h"
@@ -26,9 +24,8 @@ int main()
 {
 	/*choice stores the choice of operation by the user
 	x stores the data given by user
-	succ stores the successor value
 	os stores the type of os being used*/
-	int choice = 0, x = 0, succ = 0, os = -1;
+	int choice = 0, x = 0, os = -1;
 	AVLTree tree; //tree contains the main tree
 	bool isXPresent = false; //stores whether a searched value is present or not
 	/*inputFileName stores the input file name
@@ -137,38 +134,3 @@ int main()
 	outputFile.close(); //close output file
 	return 0;
 }
-
-/*
-
-1
-21
-1
-26
-1
-30
-1
-9
-1
-4
-1
-14
-1
-28
-1
-18
-1
-15
-1
-10
-1
-2
-1
-3
-1
-7
-1
-14
-4
-5
-
-*/

@@ -1,155 +1,99 @@
-/*fileCount stores a number so that multiple files could be created easily*/
+/*fileCount stores a number so that multiple files could be created easily
+fileType stores a number to indicate the type of file to be generated based on OS type*/
 int fileCount = -1, fileType = -1;
 string color = "black"; //stores the color names
-Stack stack;
+Stack stack; //used for deletion
 
 void AVLTree :: insert(int x)
 {
 	TreeNode * tree = root; //tree stores the reference to the node under which rotation will happen
 	/*start stores the balance point
-	temp moves from root to leaf for inserting end node*/
-	TreeNode * start = root->right, * temp = root->right;
-	/*end points to the new node which is being inserted
+	temp moves from root to leaf for inserting end node
+	end points to the new node which is being inserted
 	rotate points to the node where first potential rotation happens
 	for single rotation, that is the first rotation itself
 	for double rotation, the first rotation happens at rotate*/
-	TreeNode * end = nullptr, * rotate = nullptr;
+	TreeNode * start = nullptr, * temp = nullptr, * end = nullptr, * rotate = nullptr;
 	int newBF = -2; //it stores the new balance factor
- 
-	TreeNode * newNode = new TreeNode(x); //create a new node for x
-	if (temp == nullptr) //if this is the first node being inserted, insert and return
+
+	if (root->right == nullptr) //if this is the first node being inserted, insert and return
 	{
 		root->right = newNode;
 		return;
 	}
-	if (temp->data == x) //if the value is already present in root, throw exception
+
+	if (root->right->data == x) //if the value is already present in root, throw exception
 		throw "Duplicate Value Exception";
 
 	/*Search for the location of the new node to be inserted*/
+	start = root->right; //start from the root node of the tree
+	temp = start;
 	while (true) //run an infinite loop
 	{
-		if (x < temp->data) //if the new value is less than current node
-		{
-			end = temp->left; //move the end pointer to left
-			if (end == nullptr) //if end becomes null
-			{
-				temp->left = newNode; //insert the node there
-				end = temp->left; //point end to the new node
-				break; //break from loop
-			}
-			else //if end is not null
-			{
-				if (end->bF != 0)
-				{
-					tree = temp;
-					start = end;
-				}
-				temp = end;
-			}
-		}
-		else if (x > temp->data)
-		{
-			end = temp->right;
-			if (end == nullptr)
-			{
-				temp->right = newNode;
-				end = temp->right;
-				break;
-			}
-			else
-			{
-				if(end->bF != 0)
-				{
-					tree = temp;
-					start = end;
-				}
-				temp = end;
-			}
-		}
-		else
+		if (x == temp->data) //if the value already exists, throw an exception
 			throw "Duplicate Value Exception";
+		end = x < temp->data ? temp->left : temp->right; //move end point appropriately
+		if (end == nullptr) //if end becomes null
+		{
+			if (x < temp->data) //if x is less than temp
+			{
+				temp->left = new TreeNode(x); //add x to left of temp
+				end = temp->left; //point end to the newly added node
+			}
+			else //if x is greater than temp
+			{
+				temp->right = new TreeNode(x); //add x to right of temp
+				end = temp->right; //point end to the newly added node
+			}
+			break;
+		}
+		else //if end is not null
+		{
+			if (end->bF != 0) //if balance factor is non zero
+			{
+				start = end; //make it a balance point
+				tree = temp; //store its parent in tree
+			}
+			temp = end; //move temp
+		}
 	}
 
-	newBF = x < start->data ? 1 : -1;
- 
-	rotate = newBF == 1 ? start->left : start->right;
-	temp = newBF == 1 ? start->left : start->right;
+	newBF = x < start->data ? 1 : -1; //find out the new balance factor
+	rotate = newBF == 1 ? start->left : start->right; //point rotate to the left or right of start according to where insertion happened
+	temp = newBF == 1 ? start->left : start->right; //point temp to the left or right of start according to where insertion happened
 	
-	while (temp != end)
+	while (temp != end) //till temp is not equal to end
 	{
-		if (x < temp->data)
+		if (x < temp->data) //if x is less than temp
 		{
-			temp->bF = 1;
-			temp = temp->left;
+			temp->bF = 1; //set its balance factor to 1
+			temp = temp->left; //move left
 		}
-		else if (x > temp->data)
+		else if (x > temp->data) //if x is greater than temp
 		{
-			temp->bF = -1;
-			temp = temp->right;
+			temp->bF = -1; //set its balance factor to -1
+			temp = temp->right; //move right
 		}
 	}
 
-	if (start->bF == 0)
+	if (start->bF == 0) //if balance factor of start is 0
 	{
-		start->bF = newBF;
-		return;
+		start->bF = newBF; //store the new balance factor in it
+		return; //return
 	}
-	else if (start->bF == -1*newBF)
+	else if (start->bF == -1*newBF) //if balance factor of start is opposite to the new balance factor that means the tree has become more balanced
 	{
-		start->bF = 0;
-		return;
+		start->bF = 0; //set the balance factor to 0
+		return; //return
 	}
-	else
+	else //if (start->bF == newBF) //if balance factor of start is equal to the new balance factor
 	{
-		if (rotate->bF == newBF)
-		{
-			if (newBF == 1)
-			{
-				temp = rotate;
-				start->left = rotate->right;
-				rotate->right = start;
-				start->bF = 0;
-				rotate->bF = 0; 
-			}
-			else if(newBF == -1)
-			{
-				temp = rotate;
-				start->right = rotate->left;
-				rotate->left = start;
-				start->bF = 0;
-				rotate->bF = 0;
-			}
-		}
-		else if (rotate->bF == -1*newBF)
-		{
-			if (newBF == 1)
-			{
-				temp = rotate->right;
-				rotate->right = temp->left;
-				temp->left = rotate;
-				start->left = temp->right;
-				temp->right = start;
-				start->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-				rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-				temp->bF = 0;
-			}
-			else if (newBF == -1)
-			{
-				temp = rotate->left;
-				rotate->left = temp->right;
-				temp->right = rotate;
-				start->right = temp->left;
-				temp->left = start;
-				start->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-				rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-				temp->bF = 0;
-			}
-		}
+		if (rotate->bF == newBF) //if balance factor of rotate is also same as balance factor of start
+			temp = newBF == 1 ? rotateRR(start,rotate,0,0) : rotateLL(start,rotate,0,0); //single rotations will happen
+		else if (rotate->bF == -1*newBF) //if balance factor of rotate is different from balance factor of start
+			temp = newBF == 1 ? rotateLR(start,rotate,newBF,1) : rotateRL(start,rotate,newBF,1); //double rotations will happen
+		transplant(tree, start, temp); //reattach the rotated subtree
 	}
- 
-	if (start == tree->right)
-		tree->right = temp;
-	else tree->left = temp;
 }
 
 bool AVLTree :: search(int x)
@@ -159,10 +103,10 @@ bool AVLTree :: search(int x)
 	{
 		if (x < returnNode->data) //if x is smaller
 			returnNode = returnNode->left != nullptr ? returnNode->left : nullptr; //if pointer points to leaf, make it null, otherwise, move left
-		else //otherwise
+		else //if x is greater
 			returnNode = returnNode->right != nullptr ? returnNode->right : nullptr; //if pointer points to leaf, make it null, otherwise, move right
 	}
-	return (returnNode == nullptr ? false : true); //return the node
+	return (returnNode == nullptr ? false : true); //return a boolean value
 }
 
 void AVLTree :: print()
@@ -215,8 +159,9 @@ void AVLTree :: print()
 		nodeStructure.append(to_string(currNode->data));
 		nodeStructure.append("[label = \"<L> |<D> ");
 		nodeStructure.append(to_string(currNode->data));
-		nodeStructure.append(",");
+		nodeStructure.append("(");
 		nodeStructure.append(to_string(currNode->bF));
+		nodeStructure.append(")");
 		nodeStructure.append("|<R> \"");
 		if (isLeaf(currNode))
 			nodeStructure.append(",fontcolor=\"red\"");
@@ -259,284 +204,98 @@ void AVLTree :: print()
 void AVLTree :: deleteK(int x)
 {
 	TreeNode * tree = root; //tree stores the reference to the node under which rotation will happen
-	TreeNode * start = root->right;
-	TreeNode * node = nullptr, * parent = nullptr;
+	TreeNode * start = root->right; //start from root of tree
+	TreeNode * node = nullptr, * parent = nullptr; //node and parent will point to the node to be deleted and its parent respectively
 
-	node = searchNode(x);
-	if (node == nullptr)
-		throw "Missing Node Exception";
-	parent = getParent(node);
-	if (isLeaf(node))
-		deleteLeafNode(node,parent);
-	else if (node->left == nullptr || node->right == nullptr)
-		deleteNodeWithSingleChild(node,parent);
-	else
+	node = searchNode(x); //search for x using the private searchNode function
+	if (node == nullptr) //if node not found
+		throw "Missing Node Exception"; //throw and exception
+	parent = getParent(node); //get the parent of node
+	if (node->left == nullptr || node->right == nullptr) //if any of the child of node is null
+		deleteNodeWithNullChildren(node,parent); //call the delete function which deletes such nodes
+	else //if node has two children
 	{
-		TreeNode * succ = leftMost(node->right); //find the successor of current node
-		searchNode(succ->data);
+		TreeNode * succ = leftMost(node->right); //find the successor of node
+		searchNode(succ->data); //call searchNode function for successor
 		TreeNode * parentSucc = getParent(succ); //find the parent of the successor node
-		TreeNode * newCurrNode = nullptr; //create another pointer
-		if (isLeaf(succ)) //if successor is a leaf
-			newCurrNode = deleteLeafNode(succ,parentSucc); //detach the successor by calling leaf deletion function and store in the pointer
-		else //otherwise
-			newCurrNode = deleteNodeWithSingleChild(succ,parentSucc); //detach the successor by calling single child deletion function and store in the pointer
-		newCurrNode->bF = node->bF;
-		newCurrNode->left = node->left;
-		newCurrNode->right = node->right;
-		parent = getParent(node);
-		if (parent->left == node)
-			parent->left = newCurrNode;
-		else
-			parent->right = newCurrNode;
+		TreeNode * newCurrNode = deleteNodeWithNullChildren(succ,parentSucc); //delete successor using the delete function and catch the deleted node
+		newCurrNode->bF = node->bF; //store the balance factor
+		newCurrNode->left = node->left; //store the left link
+		newCurrNode->right = node->right; //store the right link
+		parent = getParent(node); //get the new parent of node
+		transplant(parent, node, newCurrNode); //replace node with newCurrNode
 	}
+	free(node); //free node
 }
 
 bool AVLTree :: isLeaf(TreeNode * node)
 {
-	if (node->left == nullptr && node->right == nullptr)
-		return true;
-	return false;
-}
-
-TreeNode * AVLTree :: copyNodes(TreeNode * root, unordered_map<TreeNode *, TreeNode *> &map)
-{
-	TreeNode * newNode = new TreeNode(root->data); //create a new node having same data as root
-	map[root] = newNode; //store it in map
-	if (root->left != nullptr) //if root has a left child
-		newNode->left = copyNodes(root->left,map); //recur on left child
-	if (root->right != nullptr) //if root has a right child
-		newNode->right = copyNodes(root->right,map); //recur on right child
-	return newNode;
+	if (node->left == nullptr && node->right == nullptr) //if both the children are null
+		return true; //return true
+	return false; //return false
 }
 
 TreeNode * AVLTree :: searchNode(int x)
 {
-	while (!stack.isEmpty())
-		stack.pop();
-	stack.push(root);
-	TreeNode * returnNode = root->right; //point to root
+	while (!stack.isEmpty()) //till stack is not empty
+		stack.pop(); //pop everything
+	stack.push(root); //push root
+	TreeNode * returnNode = root->right; //point to root of tree
 	while (returnNode != nullptr && returnNode->data != x) //till the pointer is not null and its data is not equal to x
 	{
-		if (returnNode != nullptr)
-			stack.push(returnNode);
+		if (returnNode != nullptr) //if returnNode is not null
+			stack.push(returnNode); //push it to stack
 		if (x < returnNode->data) //if x is smaller
 			returnNode = returnNode->left != nullptr ? returnNode->left : nullptr; //if pointer points to leaf, make it null, otherwise, move left
-		else //otherwise
+		else //if x is greater
 			returnNode = returnNode->right != nullptr ? returnNode->right : nullptr; //if pointer points to leaf, make it null, otherwise, move right
 	}
 	return returnNode; //return the node
 }
 
-TreeNode * AVLTree :: deleteLeafNode(TreeNode * node, TreeNode * parent)
+TreeNode * AVLTree :: deleteNodeWithNullChildren(TreeNode * node, TreeNode * parent)
 {
-	TreeNode * rotate = nullptr, * temp = nullptr;
-	if (parent == root) //if parent is root
-		root->right = nullptr;
-	else if (parent->left == node) //if node is left child
-		parent->left = nullptr;
-	else //if node is right child
-		parent->right = nullptr;
-	while (stack.viewTop() != root)
-	{
-		TreeNode * ancestor = stack.pop();
-		TreeNode * tree = stack.viewTop();
-		int newBF = node->data < ancestor->data ? 1 : -1;
-		if (ancestor->bF == newBF)
-		{
-			ancestor->bF = 0;
-			continue;
-		}
-		else if (ancestor->bF == 0)
-		{
-			ancestor->bF = -1*newBF;
-			node->left = node->right = nullptr;
-			return node;
-		}
-		else //if (ancestor->bF == -1*newBF)
-		{
-			rotate = ancestor->bF == 1 ? ancestor->left : ancestor->right;
-			if (rotate->bF == -1*newBF)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate;
-					ancestor->left = rotate->right;
-					rotate->right = ancestor;
-					ancestor->bF = 0;
-					rotate->bF = 0;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate;
-					ancestor->right = rotate->left;
-					rotate->left = ancestor;
-					ancestor->bF = 0;
-					rotate->bF = 0;
-				}
-			}
-			else if (rotate->bF == 0)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate;
-					ancestor->left = rotate->right;
-					rotate->right = ancestor;
-					//ancestor->bF = 0;
-					rotate->bF = newBF;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate;
-					ancestor->right = rotate->left;
-					rotate->left = ancestor;
-					//ancestor->bF = 0;
-					rotate->bF = newBF;
-				}
-			}
-			else if (rotate->bF == newBF)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate->right;
-					rotate->right = temp->left;
-					temp->left = rotate;
-					ancestor->left = temp->right;
-					temp->right = ancestor;
-					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-					temp->bF = 0;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate->left;
-					rotate->left = temp->right;
-					temp->right = rotate;
-					ancestor->right = temp->left;
-					temp->left = ancestor;
-					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-					temp->bF = 0;
-				}
-			}
-		}
-		if (ancestor == tree->right)
-			tree->right = temp;
-		else
-			tree->left = temp;
-	}
-	/*reset the node and return*/
-	node->left = node->right = nullptr;
-	return node;
-}
+	/*rotate will point to the node where first potential rotation will happen
+	ancestor will point to the ancestors of node
+	tree will point to the parent of ancestor*/
+	TreeNode * rotate = nullptr, * ancestor = nullptr, * tree = nullptr;
+	TreeNode * temp = node->left == nullptr ? node->right : node->left; //point temp to the left or right of node which is non-null
+	int newBF = -2; //stores the new balance factor
 
-TreeNode * AVLTree :: deleteNodeWithSingleChild(TreeNode * node, TreeNode * parent)
-{
-	TreeNode * rotate = nullptr, * temp = nullptr;
-	if (node->left == nullptr) //if right child is present
+	if (parent == root) //if parent is root
+		root->right = isLeaf(node) ? nullptr : temp; //if node is leaf make tree null, otherwise make it point to temp
+	else if (parent->left == node) //if node is left child
+		parent->left = isLeaf(node) ? nullptr : temp; //if node is leaf store null, otherwise store temp in parent's left pointer
+	else //if node is right child
+		parent->right = isLeaf(node) ? nullptr : temp; //if node is leaf store null, otherwise store temp in parent's right pointer
+	while (stack.viewTop() != root) //till stack top is not equal to root
 	{
-		if (parent == root) //if parent is root
-			root->right = node->right; //move root
-		else if (parent->right == node) //if node is right child
-			parent->right = node->right; //store node's right in parent's right
-		else //if node is left child
-			parent->left = node->right; //store node's right in parent's left		
-	}
-	else if (node->right == nullptr) //if left child is present
-	{
-		if (parent == root) //if parent is root
-			root->right = node->left; //move root
-		else if (parent->left == node) //if node is left child
-			parent->left = node->left; //store node's left in parent's left
-		else //if node is right child
-			parent->right = node->left; //store node's left in parent's right
-	}
-	while (stack.viewTop() != root)
-	{
-		TreeNode * ancestor = stack.pop();
-		TreeNode * tree = stack.viewTop();
-		int newBF = node->data < ancestor->data ? 1 : -1;
-		if (ancestor->bF == newBF)
+		ancestor = stack.pop(); //pop the stack and store in ancestor
+		tree = stack.viewTop(); //store current top in tree
+		newBF = node->data < ancestor->data ? 1 : -1; //update the new balance factor
+		if (ancestor->bF == newBF) //if ancestor's balance factor is same as new balance factor
 		{
-			ancestor->bF = 0;
-			continue;
+			ancestor->bF = 0; //make it 0
+			continue; //continue
 		}
-		else if (ancestor->bF == 0)
+		else if (ancestor->bF == 0) //if ancestor's balance factor was 0
 		{
-			ancestor->bF = -1*newBF;
+			ancestor->bF = -1*newBF; //store the opposite of new balance factor in it
+			/*reset the node and return*/
 			node->left = node->right = nullptr;
 			return node;
 		}
-		else //if (ancestor->bF == -1*newBF)
+		else //if (ancestor->bF == -1*newBF) //if ancestor's balance factor is opposite to new balance factor
 		{
-			rotate = ancestor->bF == 1 ? ancestor->left : ancestor->right;
-			if (rotate->bF == -1*newBF)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate;
-					ancestor->left = rotate->right;
-					rotate->right = ancestor;
-					ancestor->bF = 0;
-					rotate->bF = 0;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate;
-					ancestor->right = rotate->left;
-					rotate->left = ancestor;
-					ancestor->bF = 0;
-					rotate->bF = 0;
-				}
-			}
-			else if (rotate->bF == 0)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate;
-					ancestor->left = rotate->right;
-					rotate->right = ancestor;
-					//ancestor->bF = 0;
-					rotate->bF = newBF;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate;
-					ancestor->right = rotate->left;
-					rotate->left = ancestor;
-					//ancestor->bF = 0;
-					rotate->bF = newBF;
-				}
-			}
-			else if (rotate->bF == newBF)
-			{
-				if (newBF == -1)
-				{
-					temp = rotate->right;
-					rotate->right = temp->left;
-					temp->left = rotate;
-					ancestor->left = temp->right;
-					temp->right = ancestor;
-					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-					temp->bF = 0;
-				}
-				else //if (newBF == 1)
-				{
-					temp = rotate->left;
-					rotate->left = temp->right;
-					temp->right = rotate;
-					ancestor->right = temp->left;
-					temp->left = ancestor;
-					ancestor->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? 0 : newBF;
-					rotate->bF = temp->bF == 0 ? 0 : temp->bF == newBF ? -1*newBF : 0;
-					temp->bF = 0;
-				}
-			}
+			rotate = ancestor->bF == 1 ? ancestor->left : ancestor->right; //point rotate to left or right of ancestor
+			if (rotate->bF == -1*newBF) //if rotate's balance factor is same as ancestor's balance factor
+				temp = newBF == 1 ? rotateLL(ancestor,rotate,0,0) : rotateRR(ancestor,rotate,0,0); //single rotations will happen
+			else if (rotate->bF == 0) //if rotate's balance factor is 0
+				temp = newBF == 1 ? rotateLL(ancestor,rotate,-2,newBF) : rotateRR(ancestor,rotate,-2,newBF); //single rotations will happen
+			else if (rotate->bF == newBF) //if rotate's balance factor is opposite to ancestor's balance factor
+				temp = newBF == 1 ? rotateRL(ancestor,rotate,newBF,0) : rotateLR(ancestor,rotate,newBF,0); //double rotations will happen
+			transplant(tree, ancestor, temp); //reattach the rotated subtree
 		}
-		if (ancestor == tree->right)
-			tree->right = temp;
-		else
-			tree->left = temp;
 	}
 	/*reset the node and return*/
 	node->left = node->right = nullptr;
@@ -577,4 +336,85 @@ TreeNode * AVLTree :: getParent(TreeNode * node)
 			temp = temp->right; //move right
 	}
 	return parent; //return parent otherwise
+}
+
+TreeNode * AVLTree :: rotateLL(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
+{
+	TreeNode * newRoot = rotate; //point the new root of rotated subtree to rotate
+	oldRoot->right = rotate->left; //attach rotate's left subtree to old root's right subtree
+	rotate->left = oldRoot; //attach old root as the left child of rotate i.e. the new root
+	if (oldRootBF >= -1 && oldRootBF <= 1) oldRoot->bF = oldRootBF; //update balance factor
+	if (rotateBF >= -1 && rotateBF <= 1) rotate->bF = rotateBF; //update balance factor
+	return newRoot; //return new root
+}
+
+TreeNode * AVLTree :: rotateRR(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
+{
+	TreeNode * newRoot = rotate; //point the new root of rotated subtree to rotate
+	oldRoot->left = rotate->right; //attach rotate's right subtree to old root's left subtree
+	rotate->right = oldRoot; //attach old root as the right child of rotate i.e. the new root
+	if (oldRootBF >= -1 && oldRootBF <= 1) oldRoot->bF = oldRootBF; //update balance factor
+	if (rotateBF >= -1 && rotateBF <= 1) rotate->bF = rotateBF; //update balance factor
+	return newRoot; //return new root
+}
+
+TreeNode * AVLTree :: rotateLR(TreeNode * oldRoot, TreeNode * rotate, int newBF, int operation)
+{
+	TreeNode * newRoot = rotate->right; //point new root to the right child of rotate, since that is going to be the actual rotation point after first rotation
+	rotate->right = newRoot->left; //attach new root's left subtree to rotate's right subtree
+	newRoot->left = rotate; //attach rotate as the left child of new root
+	oldRoot->left = newRoot->right; //attach new root's right subtree to old root's left subtree
+	newRoot->right = oldRoot; //attach old root as the right child of new root
+	if (operation == 1) //if insertion is happening, update the balance factors as follows
+	{
+		oldRoot->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? -1*newBF : 0;
+		rotate->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? 0 : newBF;
+	}
+	else if (operation == 0) //if deletion is happening, update the balance factor sexactly opposite to the insertion operation's updation 
+	{
+		oldRoot->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? 0 : newBF;
+		rotate->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? -1*newBF : 0;
+	}
+	newRoot->bF = 0; //set new root's balance factor to 0
+	return newRoot; //return new root
+}
+
+TreeNode * AVLTree :: rotateRL(TreeNode * oldRoot, TreeNode * rotate, int newBF, int operation)
+{
+	TreeNode * newRoot = rotate->left; //point new root to the left child of rotate, since that is going to be the actual rotation point after first rotation
+	rotate->left = newRoot->right; //attach new root's right subtree to rotate's left subtree
+	newRoot->right = rotate; //attach rotate as the right child of new root
+	oldRoot->right = newRoot->left; //attach new root's left subtree to old root's right subtree
+	newRoot->left = oldRoot; //attach old root as the left child of new root
+	if (operation == 1) //if insertion is happening, update the balance factors as follows
+	{
+		oldRoot->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? -1*newBF : 0;
+		rotate->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? 0 : newBF;
+	}
+	else if (operation == 0) //if deletion is happening, update the balance factor sexactly opposite to the insertion operation's updation
+	{
+		oldRoot->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? 0 : newBF;
+		rotate->bF = newRoot->bF == 0 ? 0 : newRoot->bF == newBF ? -1*newBF : 0;
+	}
+	newRoot->bF = 0; //set new root's balance factor to 0
+	return newRoot; //return new root
+}
+
+void AVLTree :: transplant(TreeNode * mainTree, TreeNode * replace, TreeNode * subTree)
+{
+	if (replace == mainTree->right) //if the node to be replaced is the right child of the main tree
+		mainTree->right = subTree; //attach the new subtree to the right of main tree
+	else //if the node to be replaced is the left child of the main tree
+		mainTree->left = subTree; //attach the new subtree to the left of main tree
+}
+
+TreeNode * AVLTree :: copyNodes(TreeNode * root, unordered_map<TreeNode *, TreeNode *> &map)
+{
+	TreeNode * newNode = new TreeNode(root->data); //create a new node having same data as root
+	map[root] = newNode; //store it in map
+	if (root->left != nullptr) //if root has a left child
+		newNode->left = copyNodes(root->left,map); //recur on left child
+	if (root->right != nullptr) //if root has a right child
+		newNode->right = copyNodes(root->right,map); //recur on right child
+	return newNode;
 }

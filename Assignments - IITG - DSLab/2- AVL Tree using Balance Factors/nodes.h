@@ -1,20 +1,3 @@
-//#include "datastructures.h"
-/*
-* Node for Linked List
-* Contains integer and a self reference
-*/
-class ListNode
-{
-public:
-	int data;
-	ListNode * next;
-	ListNode(int x)
-	{
-		data = x;
-		next = nullptr;
-	}
-};
-
 /*
 * Node for AVL Tree
 * Contains integer data, two self references, balance factor
@@ -36,7 +19,6 @@ public:
 	}
 
 	friend class AVLTree;
-	friend class List;
 };
 
 /*
