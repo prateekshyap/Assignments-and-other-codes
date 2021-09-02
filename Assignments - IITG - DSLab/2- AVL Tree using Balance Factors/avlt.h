@@ -18,7 +18,7 @@ void AVLTree :: insert(int x)
 
 	if (root->right == nullptr) //if this is the first node being inserted, insert and return
 	{
-		root->right = newNode;
+		root->right = new TreeNode(x);
 		return;
 	}
 
@@ -89,7 +89,7 @@ void AVLTree :: insert(int x)
 	else //if (start->bF == newBF) //if balance factor of start is equal to the new balance factor
 	{
 		if (rotate->bF == newBF) //if balance factor of rotate is also same as balance factor of start
-			temp = newBF == 1 ? rotateRR(start,rotate,0,0) : rotateLL(start,rotate,0,0); //single rotations will happen
+			temp = newBF == 1 ? rotateLL(start,rotate,0,0) : rotateRR(start,rotate,0,0); //single rotations will happen
 		else if (rotate->bF == -1*newBF) //if balance factor of rotate is different from balance factor of start
 			temp = newBF == 1 ? rotateLR(start,rotate,newBF,1) : rotateRL(start,rotate,newBF,1); //double rotations will happen
 		transplant(tree, start, temp); //reattach the rotated subtree
@@ -198,7 +198,7 @@ void AVLTree :: print()
 
 	graphViz << "}" << endl;
 	
-	graphViz.close();					
+	graphViz.close();
 }
 
 void AVLTree :: deleteK(int x)
@@ -261,7 +261,7 @@ TreeNode * AVLTree :: deleteNodeWithNullChildren(TreeNode * node, TreeNode * par
 	TreeNode * rotate = nullptr, * ancestor = nullptr, * tree = nullptr;
 	TreeNode * temp = node->left == nullptr ? node->right : node->left; //point temp to the left or right of node which is non-null
 	int newBF = -2; //stores the new balance factor
-
+	int ancestorBF = -2;
 	if (parent == root) //if parent is root
 		root->right = isLeaf(node) ? nullptr : temp; //if node is leaf make tree null, otherwise make it point to temp
 	else if (parent->left == node) //if node is left child
@@ -271,6 +271,7 @@ TreeNode * AVLTree :: deleteNodeWithNullChildren(TreeNode * node, TreeNode * par
 	while (stack.viewTop() != root) //till stack top is not equal to root
 	{
 		ancestor = stack.pop(); //pop the stack and store in ancestor
+		ancestorBF = ancestor->bF; //store the current balance factor of the ancestor
 		tree = stack.viewTop(); //store current top in tree
 		newBF = node->data < ancestor->data ? 1 : -1; //update the new balance factor
 		if (ancestor->bF == newBF) //if ancestor's balance factor is same as new balance factor
@@ -289,12 +290,17 @@ TreeNode * AVLTree :: deleteNodeWithNullChildren(TreeNode * node, TreeNode * par
 		{
 			rotate = ancestor->bF == 1 ? ancestor->left : ancestor->right; //point rotate to left or right of ancestor
 			if (rotate->bF == -1*newBF) //if rotate's balance factor is same as ancestor's balance factor
-				temp = newBF == 1 ? rotateLL(ancestor,rotate,0,0) : rotateRR(ancestor,rotate,0,0); //single rotations will happen
+				temp = newBF == 1 ? rotateRR(ancestor,rotate,0,0) : rotateLL(ancestor,rotate,0,0); //single rotations will happen
 			else if (rotate->bF == 0) //if rotate's balance factor is 0
-				temp = newBF == 1 ? rotateLL(ancestor,rotate,-2,newBF) : rotateRR(ancestor,rotate,-2,newBF); //single rotations will happen
+				temp = newBF == 1 ? rotateRR(ancestor,rotate,-2,newBF) : rotateLL(ancestor,rotate,-2,newBF); //single rotations will happen
 			else if (rotate->bF == newBF) //if rotate's balance factor is opposite to ancestor's balance factor
 				temp = newBF == 1 ? rotateRL(ancestor,rotate,newBF,0) : rotateLR(ancestor,rotate,newBF,0); //double rotations will happen
 			transplant(tree, ancestor, temp); //reattach the rotated subtree
+			if (temp->bF == ancestorBF || temp->bF == -1*ancestorBF) //if the balance factor has not changed for the subtree, we need not do further rotations
+			{
+				node->left = node->right = nullptr;
+				return node;
+			}
 		}
 	}
 	/*reset the node and return*/
@@ -338,7 +344,7 @@ TreeNode * AVLTree :: getParent(TreeNode * node)
 	return parent; //return parent otherwise
 }
 
-TreeNode * AVLTree :: rotateLL(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
+TreeNode * AVLTree :: rotateRR(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
 {
 	TreeNode * newRoot = rotate; //point the new root of rotated subtree to rotate
 	oldRoot->right = rotate->left; //attach rotate's left subtree to old root's right subtree
@@ -348,7 +354,7 @@ TreeNode * AVLTree :: rotateLL(TreeNode * oldRoot, TreeNode * rotate, int oldRoo
 	return newRoot; //return new root
 }
 
-TreeNode * AVLTree :: rotateRR(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
+TreeNode * AVLTree :: rotateLL(TreeNode * oldRoot, TreeNode * rotate, int oldRootBF, int rotateBF)
 {
 	TreeNode * newRoot = rotate; //point the new root of rotated subtree to rotate
 	oldRoot->left = rotate->right; //attach rotate's right subtree to old root's left subtree

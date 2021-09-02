@@ -38,9 +38,9 @@ public:
 		delete root;
 	}
 	void insert(int); //insert
+	void deleteK(int); //delete
 	bool search(int); //search
 	void print(); //print tree
-	void deleteK(int); //delete
 
 private:
 	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not

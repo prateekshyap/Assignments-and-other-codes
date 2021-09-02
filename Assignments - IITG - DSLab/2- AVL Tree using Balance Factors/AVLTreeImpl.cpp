@@ -18,7 +18,6 @@ using namespace std;
 #include"functions.h" //contains other functions
 
 extern int fileCount, fileType; //external variables
-extern string color; //external variable
 
 int main()
 {
@@ -107,13 +106,13 @@ int main()
 					outputFile << "Printing tree with file name- struct" << fileCount << ".png" << endl;
 					outputFile << "Graphviz file can be found with file name- bstStructure" << fileCount << ".gv" << endl << endl;
 					tree.print(); //call print tree function
-					generatePNG(os); //generate images
 					break;
 
 				case 5: //quit from execution
 					cout << "Quit" << endl; //print to console
 					outputFile << "Quit" << endl << endl; //print to output file
 					/*//store timestamp in output file*/
+					generatePNG(os); //generate images
 					now = time(0);
 					timestamp = ctime(&now);
 					outputFile << "Execution ended at: " << timestamp << endl;
@@ -126,11 +125,12 @@ int main()
 		}
 
 		/*//store timestamp in output file*/
+		generatePNG(os); //generate images
 		now = time(0);
 		timestamp = ctime(&now);
 		outputFile << "Execution ended at: " << timestamp << endl << endl << endl << endl ;
 		inputFile.close(); //close input file
-	}	
+	}
 	outputFile.close(); //close output file
 	return 0;
 }
