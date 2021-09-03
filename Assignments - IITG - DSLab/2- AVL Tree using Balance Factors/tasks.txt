@@ -1,0 +1,5 @@
+g++ -o AVLTreeImpl -g AVLTreeImpl.cpp
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./AVLTreeImpl
+
+g++ -c AVLTreeImpl.cpp
+g++ -o AVLTreeImpl AVLTreeImpl.o

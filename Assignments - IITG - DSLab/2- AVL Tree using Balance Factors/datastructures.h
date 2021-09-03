@@ -10,6 +10,10 @@ public:
 		top = nullptr; //initialize to null
 		size = 0; //initialize to 0
 	}
+	~Stack()
+	{
+		delete top;
+	}
 	void push(TreeNode *); //function to push
 	TreeNode * pop(); //function to pop
 	bool isEmpty(); //function to check if the stack is empty
@@ -35,12 +39,12 @@ public:
 	}
 	~AVLTree()
 	{
-		delete root;
+		delete[] root;
 	}
 	void insert(int); //insert
 	void deleteK(int); //delete
 	bool search(int); //search
-	void print(); //print tree
+	void print(const char *); //print tree
 
 private:
 	bool isLeaf(TreeNode *); //function to check whether a node is leaf or not
@@ -55,6 +59,7 @@ private:
 	TreeNode * rotateRL(TreeNode *, TreeNode *, int, int); //function for RL rotation
 	void transplant(TreeNode *, TreeNode *, TreeNode *); //function to attach a subtree to main tree
 	TreeNode * copyNodes(TreeNode *, unordered_map<TreeNode *, TreeNode *> &); //function called by the copy constructor
+	void deleteNodes(TreeNode *);
 };
 
 class Queue
@@ -68,6 +73,11 @@ public:
 	{
 		front = rear = nullptr; //initialize both the pointers to null
 		size = 0; //initialize size to 0
+	}
+	~Queue()
+	{
+		delete front;
+		delete rear;
 	}
 	void enqueue(TreeNode *); //function to enqueue
 	TreeNode * dequeue(); //function to dequeue

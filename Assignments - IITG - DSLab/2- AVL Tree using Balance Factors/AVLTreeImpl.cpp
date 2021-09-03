@@ -29,8 +29,9 @@ int main()
 	bool isXPresent = false; //stores whether a searched value is present or not
 	/*inputFileName stores the input file name
 	outputFileName stores the output file name
+	printFileName takes the file name from user
 	timestamp stores the current timestamp in string format*/
-	string inputFileName = "", outputFileName = "output.txt", timestamp = "";
+	string inputFileName = "", outputFileName = "output.txt", printFileName = "", timestamp = "";
 	time_t now; //stores the current time
 	ifstream inputFile; //input file stream
 	ofstream outputFile; //output file stream
@@ -40,6 +41,8 @@ int main()
 	cin >> os;
 	fileType = os;
 	fileCount = 0; //initializing fileCount
+	cout << "Enter universal file name to generate images(Don't write extension names)-" << endl;
+	cin >> printFileName;
 
 	outputFile.open(outputFileName); //open the output file
 
@@ -103,9 +106,9 @@ int main()
 
 				case 4: //print tree
 					/*print file details into output file*/
-					outputFile << "Printing tree with file name- struct" << fileCount << ".png" << endl;
-					outputFile << "Graphviz file can be found with file name- bstStructure" << fileCount << ".gv" << endl << endl;
-					tree.print(); //call print tree function
+					outputFile << "Printing tree with file name- " << printFileName << fileCount << ".png" << endl;
+					outputFile << "Graphviz file can be found with file name- " << printFileName << fileCount << ".gv" << endl << endl;
+					tree.print(printFileName.c_str()); //call print tree function
 					break;
 
 				case 5: //quit from execution
@@ -113,6 +116,7 @@ int main()
 					outputFile << "Quit" << endl << endl; //print to output file
 					/*//store timestamp in output file*/
 					generatePNG(os); //generate images
+					tree.~AVLTree();
 					now = time(0);
 					timestamp = ctime(&now);
 					outputFile << "Execution ended at: " << timestamp << endl;
@@ -126,6 +130,7 @@ int main()
 
 		/*//store timestamp in output file*/
 		generatePNG(os); //generate images
+		tree.~AVLTree();
 		now = time(0);
 		timestamp = ctime(&now);
 		outputFile << "Execution ended at: " << timestamp << endl << endl << endl << endl ;

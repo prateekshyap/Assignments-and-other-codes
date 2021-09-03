@@ -109,14 +109,15 @@ bool AVLTree :: search(int x)
 	return (returnNode == nullptr ? false : true); //return a boolean value
 }
 
-void AVLTree :: print()
+void AVLTree :: print(const char * fileName)
 {
 	string nodeStructure = ""; //stores the node structure
 	string linkStructure = ""; //stores the pointer structure
 	ofstream graphViz; //.gv file in output mode
 	ofstream commands; //commands file in output mode
 
-	string treeFileName = "bstStructure"; //giving a distinguishable file name
+	string treeFileName = "";
+	treeFileName.append(fileName);
 	treeFileName.append(to_string(fileCount)); //along with a number that is file count
 	treeFileName.append(".gv"); //adding extension name
 	graphViz.open(treeFileName); //opening the file
@@ -124,12 +125,12 @@ void AVLTree :: print()
 	if (fileType == 0) //if os is windows
 	{
 		fileCount == 0 ? commands.open("commands.bat") : commands.open("commands.bat",std::ios_base::app); //open a batch file, first time in write mode and then in append mode
-		commands << "dot -Tpng " << treeFileName << " -o struct" << to_string(fileCount++) << ".png" << endl; //add the .gv to .png conversion command to batch file
+		commands << "dot -Tpng " << treeFileName << " -o "<< fileName << to_string(fileCount++) << ".png" << endl; //add the .gv to .png conversion command to batch file
 	}
 	else if (fileType == 1) //if os is linux
 	{
 		fileCount == 0 ? commands.open("commands.sh") : commands.open("commands.sh",std::ios_base::app); //open a shell script, first time in write mode and then in append mode
-		commands << "dot -Tpng " << treeFileName << " -o struct" << to_string(fileCount++) << ".png" << endl; //add the .gv to .png conversion command to shell script
+		commands << "dot -Tpng " << treeFileName << " -o "<< fileName << to_string(fileCount++) << ".png" << endl; //add the .gv to .png conversion command to shell script
 	}
 
 	commands.close(); //close the commands file
@@ -423,4 +424,14 @@ TreeNode * AVLTree :: copyNodes(TreeNode * root, unordered_map<TreeNode *, TreeN
 	if (root->right != nullptr) //if root has a right child
 		newNode->right = copyNodes(root->right,map); //recur on right child
 	return newNode;
+}
+
+void AVLTree :: deleteNodes(TreeNode * root)
+{
+	if (root != nullptr)
+	{
+		deleteNodes(root->left);
+		deleteNodes(root->right);
+		delete root;
+	}
 }

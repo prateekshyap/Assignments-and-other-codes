@@ -17,7 +17,11 @@ public:
 		bF = 0;
 		left = right = nullptr;
 	}
-
+	~TreeNode()
+	{
+		delete left;
+		delete right;
+	}
 	friend class AVLTree;
 };
 
