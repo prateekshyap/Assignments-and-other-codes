@@ -1,0 +1,6 @@
+digraph G {
+node [shape = record, height = .1, color = "black"];
+-1[label = "<L> |<D> -1(0)|<R> "];
+21[label = "<L> |<D> 21(0)|<R> ",fontcolor="red"];
+"-1":R -> "21":D;
+}

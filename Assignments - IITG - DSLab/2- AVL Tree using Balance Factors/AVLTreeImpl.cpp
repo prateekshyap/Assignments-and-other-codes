@@ -31,7 +31,7 @@ int main()
 	outputFileName stores the output file name
 	printFileName takes the file name from user
 	timestamp stores the current timestamp in string format*/
-	string inputFileName = "", outputFileName = "output.txt", printFileName = "", timestamp = "";
+	string inputFileName = "", outputFileName = "", printFileName = "", timestamp = "";
 	time_t now; //stores the current time
 	ifstream inputFile; //input file stream
 	ofstream outputFile; //output file stream
@@ -44,14 +44,25 @@ int main()
 	cout << "Enter universal file name to generate images(Don't write extension names)-" << endl;
 	cin >> printFileName;
 
+	outputFileName.append(printFileName);
+	outputFileName.append("Output.txt");
 	outputFile.open(outputFileName); //open the output file
 
 	while (true) //run till it hits quit (option 5)
 	{		
-		printMessage(); //print the message
+		printMessage(outputFileName); //print the message
 		cin >> inputFileName; //take file name from user
-		if (inputFileName.compare("quit") == 0 || inputFileName.compare("exit") == 0 || inputFileName.compare("stop") == 0 || inputFileName.compare("return") == 0) return 0;
-
+		if (inputFileName.compare("quit") == 0 || inputFileName.compare("exit") == 0 || inputFileName.compare("stop") == 0 || inputFileName.compare("return") == 0)
+		{
+			cout << "Quit";
+			return 0;
+		}
+		else if (inputFileName.compare("image") == 0 || inputFileName.compare("view") == 0 || inputFileName.compare("print") == 0 || inputFileName.compare("visualize") == 0 || inputFileName.compare("run") == 0 || inputFileName.compare("picture") == 0)
+		{
+			generatePNG(os);
+			cout << "Images generated" << endl;
+			continue;
+		}
 		inputFile.open(inputFileName); //open input file
 
 		//store timestamp in output file
@@ -115,11 +126,10 @@ int main()
 					cout << "Quit" << endl; //print to console
 					outputFile << "Quit" << endl << endl; //print to output file
 					/*//store timestamp in output file*/
-					generatePNG(os); //generate images
-					tree.~AVLTree();
 					now = time(0);
 					timestamp = ctime(&now);
 					outputFile << "Execution ended at: " << timestamp << endl;
+					generatePNG(os); //generate images
 					return 0;
 
 				default: //default case
@@ -129,8 +139,6 @@ int main()
 		}
 
 		/*//store timestamp in output file*/
-		generatePNG(os); //generate images
-		tree.~AVLTree();
 		now = time(0);
 		timestamp = ctime(&now);
 		outputFile << "Execution ended at: " << timestamp << endl << endl << endl << endl ;

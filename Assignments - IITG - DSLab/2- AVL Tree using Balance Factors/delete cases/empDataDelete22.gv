@@ -1,0 +1,14 @@
+digraph G {
+node [shape = record, height = .1, color = "black"];
+-1[label = "<L> |<D> -1(0)|<R> "];
+10[label = "<L> |<D> 10(0)|<R> "];
+7[label = "<L> |<D> 7(1)|<R> "];
+40[label = "<L> |<D> 40(1)|<R> "];
+5[label = "<L> |<D> 5(0)|<R> ",fontcolor="red"];
+12[label = "<L> |<D> 12(0)|<R> ",fontcolor="red"];
+"-1":R -> "10":D;
+"10":L -> "7":D;
+"10":R -> "40":D;
+"7":L -> "5":D;
+"40":L -> "12":D;
+}

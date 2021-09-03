@@ -1,0 +1,138 @@
+Execution started at: Fri Sep 03 19:04:25 2021
+
+
+1
+21
+Inserting 21
+
+
+4
+Printing tree with file name- empDataInsert0.png
+Graphviz file can be found with file name- empDataInsert0.gv
+
+
+1
+26
+Inserting 26
+
+
+4
+Printing tree with file name- empDataInsert1.png
+Graphviz file can be found with file name- empDataInsert1.gv
+
+
+1
+30
+Inserting 30
+
+
+4
+Printing tree with file name- empDataInsert2.png
+Graphviz file can be found with file name- empDataInsert2.gv
+
+
+1
+9
+Inserting 9
+
+
+4
+Printing tree with file name- empDataInsert3.png
+Graphviz file can be found with file name- empDataInsert3.gv
+
+
+1
+4
+Inserting 4
+
+
+4
+Printing tree with file name- empDataInsert4.png
+Graphviz file can be found with file name- empDataInsert4.gv
+
+
+1
+14
+Inserting 14
+
+
+4
+Printing tree with file name- empDataInsert5.png
+Graphviz file can be found with file name- empDataInsert5.gv
+
+
+1
+28
+Inserting 28
+
+
+4
+Printing tree with file name- empDataInsert6.png
+Graphviz file can be found with file name- empDataInsert6.gv
+
+
+1
+18
+Inserting 18
+
+
+4
+Printing tree with file name- empDataInsert7.png
+Graphviz file can be found with file name- empDataInsert7.gv
+
+
+1
+15
+Inserting 15
+
+
+4
+Printing tree with file name- empDataInsert8.png
+Graphviz file can be found with file name- empDataInsert8.gv
+
+
+1
+10
+Inserting 10
+
+
+4
+Printing tree with file name- empDataInsert9.png
+Graphviz file can be found with file name- empDataInsert9.gv
+
+
+1
+2
+Inserting 2
+
+
+4
+Printing tree with file name- empDataInsert10.png
+Graphviz file can be found with file name- empDataInsert10.gv
+
+
+1
+3
+Inserting 3
+
+
+4
+Printing tree with file name- empDataInsert11.png
+Graphviz file can be found with file name- empDataInsert11.gv
+
+
+1
+7
+Inserting 7
+
+
+4
+Printing tree with file name- empDataInsert12.png
+Graphviz file can be found with file name- empDataInsert12.gv
+
+
+5
+Quit
+
+Execution ended at: Fri Sep 03 19:04:25 2021
+

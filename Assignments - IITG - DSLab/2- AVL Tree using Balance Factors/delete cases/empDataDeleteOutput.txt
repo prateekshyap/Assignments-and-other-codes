@@ -1,0 +1,495 @@
+Execution started at: Fri Sep 03 19:05:40 2021
+
+
+1
+60
+Inserting 60
+
+
+1
+50
+Inserting 50
+
+
+1
+80
+Inserting 80
+
+
+1
+20
+Inserting 20
+
+
+1
+55
+Inserting 55
+
+
+1
+75
+Inserting 75
+
+
+1
+82
+Inserting 82
+
+
+1
+10
+Inserting 10
+
+
+1
+32
+Inserting 32
+
+
+1
+53
+Inserting 53
+
+
+1
+56
+Inserting 56
+
+
+1
+73
+Inserting 73
+
+
+1
+76
+Inserting 76
+
+
+1
+81
+Inserting 81
+
+
+1
+83
+Inserting 83
+
+
+1
+7
+Inserting 7
+
+
+1
+12
+Inserting 12
+
+
+1
+30
+Inserting 30
+
+
+1
+40
+Inserting 40
+
+
+1
+52
+Inserting 52
+
+
+1
+54
+Inserting 54
+
+
+1
+57
+Inserting 57
+
+
+1
+72
+Inserting 72
+
+
+1
+74
+Inserting 74
+
+
+1
+78
+Inserting 78
+
+
+1
+84
+Inserting 84
+
+
+1
+6
+Inserting 6
+
+
+1
+8
+Inserting 8
+
+
+1
+14
+Inserting 14
+
+
+1
+45
+Inserting 45
+
+
+1
+51
+Inserting 51
+
+
+1
+71
+Inserting 71
+
+
+1
+5
+Inserting 5
+
+
+4
+Printing tree with file name- empDataDelete0.png
+Graphviz file can be found with file name- empDataDelete0.gv
+
+
+2
+5
+Deleting 5
+
+
+4
+Printing tree with file name- empDataDelete1.png
+Graphviz file can be found with file name- empDataDelete1.gv
+
+
+2
+71
+Deleting 71
+
+
+4
+Printing tree with file name- empDataDelete2.png
+Graphviz file can be found with file name- empDataDelete2.gv
+
+
+2
+76
+Deleting 76
+
+
+4
+Printing tree with file name- empDataDelete3.png
+Graphviz file can be found with file name- empDataDelete3.gv
+
+
+2
+78
+Deleting 78
+
+
+4
+Printing tree with file name- empDataDelete4.png
+Graphviz file can be found with file name- empDataDelete4.gv
+
+
+2
+80
+Deleting 80
+
+
+4
+Printing tree with file name- empDataDelete5.png
+Graphviz file can be found with file name- empDataDelete5.gv
+
+
+2
+73
+Deleting 73
+
+
+4
+Printing tree with file name- empDataDelete6.png
+Graphviz file can be found with file name- empDataDelete6.gv
+
+
+2
+6
+Deleting 6
+
+
+2
+8
+Deleting 8
+
+
+2
+14
+Deleting 14
+
+
+4
+Printing tree with file name- empDataDelete7.png
+Graphviz file can be found with file name- empDataDelete7.gv
+
+
+2
+20
+Deleting 20
+
+
+4
+Printing tree with file name- empDataDelete8.png
+Graphviz file can be found with file name- empDataDelete8.gv
+
+
+1
+5
+Inserting 5
+
+
+4
+Printing tree with file name- empDataDelete9.png
+Graphviz file can be found with file name- empDataDelete9.gv
+
+
+2
+53
+Deleting 53
+
+
+4
+Printing tree with file name- empDataDelete10.png
+Graphviz file can be found with file name- empDataDelete10.gv
+
+
+2
+32
+Deleting 32
+
+
+2
+45
+Deleting 45
+
+
+2
+54
+Deleting 54
+
+
+2
+75
+Deleting 75
+
+
+2
+82
+Deleting 82
+
+
+2
+51
+Deleting 51
+
+
+2
+84
+Deleting 84
+
+
+2
+72
+Deleting 72
+
+
+4
+Printing tree with file name- empDataDelete11.png
+Graphviz file can be found with file name- empDataDelete11.gv
+
+
+2
+50
+Deleting 50
+
+
+4
+Printing tree with file name- empDataDelete12.png
+Graphviz file can be found with file name- empDataDelete12.gv
+
+
+2
+30
+Deleting 30
+
+
+4
+Printing tree with file name- empDataDelete13.png
+Graphviz file can be found with file name- empDataDelete13.gv
+
+
+2
+83
+Deleting 83
+
+
+4
+Printing tree with file name- empDataDelete14.png
+Graphviz file can be found with file name- empDataDelete14.gv
+
+
+2
+81
+Deleting 81
+
+
+4
+Printing tree with file name- empDataDelete15.png
+Graphviz file can be found with file name- empDataDelete15.gv
+
+
+2
+74
+Deleting 74
+
+
+4
+Printing tree with file name- empDataDelete16.png
+Graphviz file can be found with file name- empDataDelete16.gv
+
+
+2
+60
+Deleting 60
+
+
+4
+Printing tree with file name- empDataDelete17.png
+Graphviz file can be found with file name- empDataDelete17.gv
+
+
+2
+57
+Deleting 57
+
+
+4
+Printing tree with file name- empDataDelete18.png
+Graphviz file can be found with file name- empDataDelete18.gv
+
+
+2
+56
+Deleting 56
+
+
+4
+Printing tree with file name- empDataDelete19.png
+Graphviz file can be found with file name- empDataDelete19.gv
+
+
+2
+56
+Deleting 56
+
+Missing Node Exception
+
+
+4
+Printing tree with file name- empDataDelete20.png
+Graphviz file can be found with file name- empDataDelete20.gv
+
+
+2
+55
+Deleting 55
+
+
+4
+Printing tree with file name- empDataDelete21.png
+Graphviz file can be found with file name- empDataDelete21.gv
+
+
+2
+52
+Deleting 52
+
+
+4
+Printing tree with file name- empDataDelete22.png
+Graphviz file can be found with file name- empDataDelete22.gv
+
+
+2
+40
+Deleting 40
+
+
+4
+Printing tree with file name- empDataDelete23.png
+Graphviz file can be found with file name- empDataDelete23.gv
+
+
+2
+12
+Deleting 12
+
+
+4
+Printing tree with file name- empDataDelete24.png
+Graphviz file can be found with file name- empDataDelete24.gv
+
+
+2
+10
+Deleting 10
+
+
+4
+Printing tree with file name- empDataDelete25.png
+Graphviz file can be found with file name- empDataDelete25.gv
+
+
+2
+7
+Deleting 7
+
+
+4
+Printing tree with file name- empDataDelete26.png
+Graphviz file can be found with file name- empDataDelete26.gv
+
+
+2
+5
+Deleting 5
+
+
+4
+Printing tree with file name- empDataDelete27.png
+Graphviz file can be found with file name- empDataDelete27.gv
+
+
+5
+Quit
+
+Execution ended at: Fri Sep 03 19:05:40 2021
+

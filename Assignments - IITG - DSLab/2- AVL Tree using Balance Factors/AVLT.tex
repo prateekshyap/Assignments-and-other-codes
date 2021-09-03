@@ -1,0 +1,504 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[affil-it]{authblk}
+\usepackage[left=3cm, right=3cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode,amsthm}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+% \setlength{\columnsep}{-4cm}
+% \usepackage{tikz-qtree}
+\usepackage[hidelinks]{hyperref}
+
+\title{CS513: AVL Tree Assignment}
+\date{}
+\author{Prateekshya Priyadarshini}
+\affil{M.Tech CSE}
+\setcounter{tocdepth}{3}
+\begin{document}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\maketitle
+
+\section{Approaches}
+\subsection{Keeping a dummy node to hold the tree}
+For making rotation easier, one dummy node is taken. The actual tree is stored at the right child of this dummy node. It makes rotation easier when the root itself is imbalanced.
+
+\subsection{Using balance factor for each node}
+A usual approach is to store the height of the subtree for each node. But the demerit of this approach is, when rotation happens, we need to update the height for the entire subtree. So instead of using height we can use balance factor for each node to check for imbalance.
+
+\subsection{Using level order traversal for printing the tree}
+Since the order of nodes mentioned in the graphviz file is important, we need to do a traversal of the tree starting from the root such that the root should be mentioned at the top. This can be done using either preorder traversal or level order traversal. Here level order traversal is being considered and a separate queue is implemented for that purpose.
+
+\subsection{Two global variables for printing the tree}
+\begin{enumerate}
+	\item \textbf{fileCount}\newline
+	This variable is initialized to 0. It gets incremented everytime a new graphviz file is created. So that we can create different files each time. For example-graph0.gv,graph1.gv,graph2.gv etc.
+	\item \textbf{fileType}\newline
+	This variable stores 0 for windows OS, 1 for linux OS. More options can be added as per requirement. This variable helps us to decide which type of commands file we have to create. If we are in windows, we need to add all the commands needed to convert graphviz files to png files into a batch file. Similary in linux we have to add all of them to a shell script.
+\end{enumerate}
+
+\subsection{Extra variables in Tree Node structure}
+To implement AVL Tree operations one integer variable is used. It stores the balance factor for each node. Balance factor is the difference between the height of left subtree and right subtree i.e. $bf = h(lst)+h(rst)$
+
+\subsection{Deleting the nodes with two children using successor replacement strategy}
+When a node with two children is being deleted, it can be replaced with either with its predecessor or with its successor. Here successor replacement strategy is chosen.
+
+\subsection{Creating batch files or shell scripts}
+Since the commands to generate a .png file from a .gv file are not straight forward for a beginner, this program generates batch file in windows and shell script in linux which contains all those commands. Every time a new tree is printed, these files get executed and the respective images get generated. For reference, the images won't be deleted or replaced till the program is being executed.
+
+\subsection{Storing the entire execution process}
+The entire execution process is stored in \textbf{$<user\_given\_name>$output.txt}. This file can be referred to check what went wrong, which images refer to which trees etc. Also the graphviz files and png files are stored along with a sequence number i.e. \textbf{$<user\_given\_name>$1.png} or \textbf{$<user\_given\_name>$9.gv}.
+
+\subsection{Commands used for various operations}
+\subsubsection{For makefile}
+\begin{enumerate}
+	\item g++ -c AVLTreeImpl.cpp
+	\item g++ -o AVLTreeImpl AVLTreeImpl.o
+\end{enumerate}
+\subsubsection{For valgrind}
+\begin{enumerate}
+	\item g++ -o AVLTreeImpl -g AVLTreeImpl.cpp
+	\item valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./AVLTreeImpl
+\end{enumerate}
+
+\section{Files, Functions and Their Logic}
+\subsection{nodes.h}
+This header file contains node structures for linked list, queue and binary search tree.
+
+\subsection{datastructures.h}
+This header file contains linked list class, queue class and binary search tree class along with their respective function prototypes.
+
+\subsection{stack.h}
+This header file contains the below mentioned functions for linked list.
+
+\subsubsection{void push(TreeNode *)}
+This function takes a node of type TreeNode and adds the entire node to the top of the stack. Time complexity is constant.
+
+\subsubsection{TreeNode * pop()}
+This function removes and returns the top element of the stack. Time complexity is constant.
+
+\subsubsection{bool isEmpty()}
+This function checks whether the stack is empty or not. If the size is zero then it return true otherwise returns false. Time complexity is constant.
+
+\subsubsection{int getSize()}
+This function returns the current size of the stack. Time complexity is constant.
+
+\subsubsection{TreeNode * viewTop()}
+This function returns the top element of the stack without removing it. Time complexity is constant.
+
+\subsection{queue.h}
+This header file contains the below mentioned functions for queue.
+
+\subsubsection{void enqueue(TreeNode * node)}
+This function takes a node of type TreeNode and adds the entire node to the queue at the rear end. Time complexity is constant.
+
+\subsubsection{TreeNode * dequeue()}
+This function removes and returns the front element of the queue. Time complexity is constant.
+
+\subsubsection{bool isEmpty()}
+This function checks whether the queue is empty or not. If the size is zero then it returns true otherwise returns false. Time complexity is constant.
+
+\subsubsection{int getSize()}
+This functions returns the current size of the queue. Time complexity is constant.
+
+\subsection{avlt.h}
+The whole logic of AVL Tree using balance factors revolves around a fact that a fully balanced node cannot have imbalance after insertion. Imbalance will only happen when the node is already having one extra height either on left or on right. Mathematically, if a node has balance factor $0$, it won't be affected with one insertion, but if it is $1$ or $-1$, we need to perform rotation. According to the formula, $1$ indicates that the node has more height on left subtree and $-1$ indicates that the node has more height on the right subtree. We are also using a variable $newBF$ to indicate which subtree the new node got inserted to or deleted from. If it is $1$, changes occured on left subtree and if it is $-1$, changes occured in the right subtree.
+This header file contains the below mentioned functions for threaded binary search tree.
+
+\subsubsection{void insert(int k)}
+\begin{figure}
+\includegraphics[scale=0.7]{insertcases.png}
+\caption{Various cases}
+\label{fig:insert}
+\end{figure}
+This function is called from the main function. It searches for the location where $k$ can be inserted. If $k$ is already present somewhere in the tree, it throws \textbf{Duplicate Value Exception}.\newline
+Some variables used for convenience are-
+\begin{enumerate}
+\item \textbf{$start$} pointer points to the node where the potential imbalance may happen after insertion.
+\item \textbf{$tree$} pointer stores the parent of $start$ so that we can attach the rotated subtree to it.
+\item \textbf{$newBF$} will be updated according to the subtree of $start$ to which the new node got inserted i.e. (store $1$ if inserted to left of $start$, $-1$ otherwise).
+\item \textbf{$end$} pointer points to the new node which is inserted.
+\item \textbf{$rotate$} pointer points to the child node of $start$ on $start-end$ path and that is the node where the first rotation will happen.
+\end{enumerate}
+After updating all the pointers, we start updating balance factors for each node on the $start-end$ path except the two nodes themselves. The logic goes same i.e. make it $1$ if inserted on left, $-1$ otherwise.\newline
+Now three cases arise.
+\begin{enumerate}
+\item \textbf{start-$>$bF == 0}\newline
+Store $newBF$ in it and return. Because there is no need of rotation. Since $newBF$ already indicates on which subtree the height got increased, we can straight away store it. Refer \textbf{Figure ~\ref{fig:insert} (a)}.
+\item \textbf{start-$>$bF == -1*newBF}\newline
+This indicates that, the node which $start$ points to, was already having more height on one side, but the insertion actually happened on the other side. So we need to update the balance factor to 0 and return. Refer \textbf{Figure ~\ref{fig:insert} (b)}.
+\item \textbf{start-$>$bF == newBF}\newline
+This indicates that, the node which $start$ points to, was already having more height on one side, and the insertion also happened on the same side. So here we need to perform rotation. Again two cases arise here. Refer \textbf{Figure ~\ref{fig:insert} (c)}.
+\begin{enumerate}
+\item \textbf{start-$>$bF == rotate-$>$bF}\newline
+This indicates that the new node got inserted to either left of $start$ as well as left of $rotate$ or right of $start$ as well as right of $rotate$. In such case single rotation will be needed. According to $newBF$ we need to call the respective functions i.e. if it is $1$ that means it is $LL$-imbalance and we need to call \nameref{LL} otherwise we need to call \nameref{RR}. After rotation, the balance factrors of $start$ and $rotate$ will be $0$ since these kind of cases arise towards leaf nodes and after rotation $start$ becomes leaf and $rotate$ becomes fully balanced.
+\item \textbf{start-$>$bF == -1*rotate-$>$bF}\newline
+This indicates that the new node got inserted to either left of $start$ and right of $rotate$ or vice versa. In such case double rotation will be needed. According to $newBF$ we need to call the respective functions i.e. if it $1$ that means it is $LR$-imbalance and we need to call \nameref{LR} otherwise we need to call \nameref{RL}. Balance factor updation is discussed within the rotation functions.
+\end{enumerate}
+After rotation \nameref{tr} function is called to cut the link of the second parameter from the first parameter and attach the third parameter as the left or right child of first parameter.
+\end{enumerate}
+The time complexity of this function is $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{void deleteK(int k)}
+\label{mainDel}
+This function searches for the node with value $k$ and deletes it. It also adds the ancestors of this node to a stack. If $k$ is not present then it throws \textbf{Missing Node Exception}.\newline
+Similar variables as insertion are used here for convenience.\newline
+First of all we check if the $node$ to be deleted is having two children or not. If it doesn't have two children we call \nameref{del} function to delete this node. Otherwise we find out the successor of the $node$ and delete it using the same function \nameref{del}. Since that function returns the deleted node, we can catch it here and replace it with the $node$ to be deleted.\newline
+The time complexity of this function is $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{bool search(int k)}
+\label{search}
+This function runs a standard search process. It returns $true$ if a node with value $k$ is present and $false$ otherwise. The time complexity of this function is $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{void print(const char * fileName)}
+This function does a level order traversal of the tree and generates two files. One is a graphviz(.gv) file and the other file depends on the operating system we are using. For windows it generates a batch file and for linux it generates a shell script. The file name given by the user is used to name all the files. For avoiding conflicts, numbers are added at the end of the file name.
+
+\subsubsection{bool isLeaf(TreeNode * node)}
+This function returns true if the given node is a leaf otherwise returns false.
+
+\subsubsection{TreeNode * searchNode(int k)}
+This function is similar to \nameref{search}. The only difference is it returns a pointer to the node having value $k$ ($nullptr$ if $k$ is absent). Added to that, it also adds all the ancestors of that node to a stack which helps in deletion.
+
+\subsubsection{TreeNode * deleteNodeWithNullChildren(TreeNode * node, TreeNode * parent)}
+\label{del}
+\begin{figure}
+\includegraphics[scale=0.7]{deletecases.png}
+\caption{Various cases}
+\label{fig:delete}
+\end{figure}
+This function is called from \nameref{mainDel}. It takes two parameters i.e. the node to be deleted and its parent which are denoted as $node$ and $parent$ respectively. First it replaces $parent$'s respective child with $node$'s child or $nullptr$ depending on whether $node$ is having one child or it is a leaf node. Then a loop is executed for all the stack elements. So in each iteration we move from $parent$ towards $root$.\newline
+Some variables used for convenience are-
+\begin{enumerate}
+	\item \textbf{$ancestor$} points to the current ancestor of $node$ on $parent-root$ path.
+	\item \textbf{$tree$} points to the parent of $ancestor$.
+\end{enumerate}
+Other variables like $rotate$ and $newBF$ are similar to insertion function.\newline
+We pop $ancestor$ from stack and update $newBF$ according to which subtree of $ancestor$, $node$ belongs to i.e. $1$ for left subtree and $-1$ for right subtree.\newline
+Now three cases arise again.
+\begin{enumerate}
+\item \textbf{ancestor-$>$bF == newBF}\newline
+This indicates that $ancestor$ had one extra height on the same side from where the node got deleted. That means now $ancestor$ is fully balanced. So store $0$ in $ancestor->bF$ and continue the loop. Refer \textbf{Figure ~\ref{fig:delete} (a)}.
+\item \textbf{ancestor-$>$bF == 0}\newline
+This indicates that, the $ancestor$ was fully balanced. After deletion, there is no need of rotation. But since we deleted from one subtree, the height becomes smaller on that side but the other subtree is still same. So store $-1*newBF$ in $ancestor->bF$ and return from the function. No need to check for further ancestors since the actual height of that subtree is intact. Refer \textbf{Figure ~\ref{fig:delete} (b)}.
+\item \textbf{ancestor-$>$bF == -1*newBF}\newline
+This indicates that, $ancestor$ was having one extra height on one of its subtrees and the deletion occured from the other side. Hence it became more imbalanced and we need to perform rotation. Again three cases arise here. Refer \textbf{Figure ~\ref{fig:delete} (c)}.
+\begin{enumerate}
+\item \textbf{ancestor-$>$bF == rotate-$>$bF}\newline
+This indicates that similar to $ancestor$, $rotate$ was also having one extra height on the same side subtree as $ancestor$ and the deletion occured from the other side. In such case single rotation will be needed. According to $newBF$ we need to call the respective functions i.e. if it is $1$ that means it is $RR$-imbalance and we need to call \nameref{RR} otherwise we need to call \nameref{LL}. After rotation, the balance factrors of $ancestor$ and $rotate$ will be $0$ for similar reasons mentioned above.
+\item \textbf{rotate-$>$bF == 0}\newline
+This case doesn't arise during insertion. Because while inserting, we rotate the subtree as soon as we get the first imbalance. So we can never get balance factor $0$ at the node pointed by $rotate$. But here the node pointed by $rotate$ can have $0$ as the balance factor. In this case also single rotation is needed. According to $newBF$ we need to call the respective functions i.e. if it is $1$ that means it is $RR$-imbalance and we need to call \nameref{RR} otherwise we need to call \nameref{LL}. After rotation, the balance factror of $rotate$ will be $newBF$.
+\item \textbf{ancestor-$>$bF == -1*rotate-$>$bF}\newline
+This indicates that $rotate$ has excatly opposite case as $ancestor$ i.e. if for $ancestor$, extra height was on left subtree and node from right subtree got deleted then for $rotate$, extra height was on right subtree and node from left subtree got deleted and vice versa. In such case double rotation will be needed. According to $newBF$ we need to call the respective functions i.e. if it $1$ that means it is $RL$-imbalance and we need to call \nameref{RL} otherwise we need to call \nameref{LR}. Balance factor updation is discussed within the rotation functions.
+\end{enumerate}
+This process goes on for all the ancestors on the path till root of the tree. The rotation function calls in case of deletion are opposite to the insertion function. After each rotation \nameref{tr} function is called to cut the link of the second parameter from the first parameter and attach the third parameter as the left or right child of first parameter. Then we check if the balance factor of the root of rotated subtree is same as the previous balance factor of the old root of the same subtree i.e. before rotation, that simply indicates that the height of the subtree has not changed after rotation. So we can stop the loop there and return. No need to rotate any further ancestors.
+\end{enumerate}
+
+\subsubsection{TreeNode * getParent(TreeNode * node)}
+This function finds the parent node of a given node in $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{TreeNode * leftMost(TreeNode * node)}
+This function finds the leftmost node of a given node in $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{TreeNode * rightMost(TreeNode * node)}
+This function finds the rightmost node of a given node in $O(h)$ where $h$ is the height of the tree.
+
+\subsubsection{TreeNode * rotateLL(TreeNode * oldRoot, TreeNode * rotate, int oldRoofBF, int rotateBF)}
+\label{LL}
+Here $oldRoot$ points to the node where imbalance occured and $rotate$ points to its child on the path of imbalance. Since it is $LL$-imbalance, we do one right rotation. We point $newRoot$ to $rotate$. Then we attach the right subtree of $rotate$ as the left child of $oldRoot$ and $oldRoot$ as the right child of $rotate$. Then we update the balance factor given in the parameters.
+
+\subsubsection{TreeNode * rotateRR(TreeNode * oldRoot, TreeNode * rotate, int oldRoofBF, int rotateBF)}
+\label{RR}
+$oldRoot$ and $rotate$ follow similar conventions. Since it is $RR$-imbalance, we do one left rotation. We point $newRoot$ to $rotate$. Then we attach the left subtree of $rotate$ as the right child of $oldRoot$ and $oldRoot$ as the left child of $rotate$. Then we update the balance factor given in the parameters. 
+
+\subsubsection{TreeNode * rotateLR(TreeNode * oldRoot, TreeNode * rotate, int newBF, int operation)}
+\label{LR}
+$oldRoot$ and $rotate$ follow similar conventions. Since it is $LR$-imbalance, we do one left rotation followed by one right rotation. We point $newRoot$ to $rotate$'s right child since that is going to be the new root. Then we attach the left subtree of $newRoot$ as the right child of $rotate$ and $rotate$ as the left child of $newRoot$. This finishes the first left rotation. Then we attach the right subtree of $newRoot$ as the left child of $oldRoot$ and $oldRoot$ as the right child of $newRoot$ which suffices the second right rotation.\newline
+We need to update the balance factors of $oldRoot$ and $rotate$ according to that of $newRoot$ and set the balance factor of $newRoot$ to $0$. If the balance factor of $newRoot$ is $0$, then store $0$ for both $oldRoot$ and $rotate$. For other cases the balance factors are getting updated according to the balance factor of the subtree that gets attached to the respective nodes during rotation. In case of deletion, the updation of $oldRoot$ and $rotate$ will get exchanged.
+
+\subsubsection{TreeNode * rotateRL(TreeNode * oldRoot, TreeNode * rotate, int newBF, int operation)}
+\label{RL}
+$oldRoot$ and $rotate$ follow similar conventions. Since it is $RL$-imbalance, we do one right rotation followed by one left rotation. We point $newRoot$ to $rotate$'s left child since that is going to be the new root. Then we attach the right subtree of $newRoot$ as the left child of $rotate$ and $rotate$ as the right child of $newRoot$. This finishes the first right rotation. Then we attach the left subtree of $newRoot$ as the right child of $oldRoot$ and $oldRoot$ as the left child of $newRoot$ which suffices the second left rotation.\newline
+We need to update the balance factors of $oldRoot$ and $rotate$ according to that of $newRoot$ and set the balance factor of $newRoot$ to $0$. If the balance factor of $newRoot$ is $0$, then store $0$ for both $oldRoot$ and $rotate$. For other cases the balance factors are getting updated according to the balance factor of the subtree that gets attached to the respective nodes during rotation. In case of deletion, the updation of $oldRoot$ and $rotate$ will get exchanged.
+
+\subsubsection{void transplant(TreeNode * mainTree, TreeNode * replace, TreeNode * subTree)}
+\label{tr}
+This function cuts the link of $replace$ from $mainTree$ and attaches $subTree$ at the same location of $mainTree$.
+
+\subsubsection{TreeNode * copyNodes(TreeNode * root, unorderedmap map)}
+This is a recursive function called by the copy constructor which creates a replica of the given tree.
+
+\subsection{functions.h}
+This file contains some utility functions which are being used multiple times like generating .png files or printing a long message.
+
+\section{How to create test cases}
+\subsection{User prompt}
+After executing the program, a prompt will ask the user to enter a number indicating the current operating system. Then a prompt will be printed mentioning the sequence of operations and some small example test cases. It will ask the user to write a file name. So here the user needs to create a .txt file with a sequence of integers and save it in the same directory. Then the same file name should be given in the prompt. A sample prompt is shown in \textbf{Figure ~\ref{fig:ex1}}. If the last instruction is not to quit the execution, after executing the current .txt file the same prompt will reappear for further execution. A new .txt file can be created and the name can be given. For quitting the execution the last instruction in the .txt file should be $5$. Also, "quit" or "exit" or similar keywords can be given instead of file name to quit the execution. Currently added keywords are - quit, exit, stop, return. More can be added at line number - 55 in AVLTreeImpl.cpp . Similarly, for generating images midway, "view" or "print" or similar keywords can be given instead of file name. Currently added keywords are - image, view, print, visualize, run, picture. More can be added at line number - 56 in AVLTreeImpl.cpp .
+\begin{figure}
+\includegraphics[scale=0.45]{console.png}
+\caption{Sample prompt}
+\label{fig:ex1}
+\end{figure}
+\subsection{Example testcase}
+1\newline
+9\newline
+1\newline
+5\newline
+1\newline
+15\newline
+1\newline
+3\newline
+1\newline
+7\newline
+1\newline
+11\newline
+1\newline
+17\newline
+2\newline
+15\newline
+3\newline
+5\newline
+4\newline
+5\newline\newline
+The above sequence can be written as a test case in an input file, which indicates the following.\newline
+1 (Insert the next value)\newline
+9\newline
+1 (Insert the next value)\newline
+5\newline
+1 (Insert the next value)\newline
+15\newline
+1 (Insert the next value)\newline
+3\newline
+1 (Insert the next value)\newline
+7\newline
+1 (Insert the next value)\newline
+11\newline
+1 (Insert the next value)\newline
+17\newline
+2 (Delete the next value)\newline
+15\newline
+3 (Search the next value)\newline
+5\newline
+4 (Print the tree)\newline
+5 (Quit)
+\section{Instructions to execute the code}
+\begin{enumerate}
+	\item If you're using Dev C++, Follow the steps to support $unordered\_map$. Go to tools--compiler option--general tab--tick mark option (add the following commands when calling compiler)--add -std=c++11 there. Then build and execute the project.
+	\item In linux or GNU windows compiler, open the terminal or command prompt and type "g++ AVLTreeImpl.cpp" and hit enter.
+	\item Then for linux type "./a.out". For windows type "a.exe" or "AVLTreeImpl.exe" (One of them should work). Hit enter.
+	\item You can also write "./AVLTreeImpl" and hit enter to execute the makefile which is provided.
+	\item Now the prompt will be displayed. Enter 0 or 1 for windows or linux respectively.
+	\item Give a name for all the files which are going to be generated during execution.
+	\item Write a .txt file according to the given format and enter the file name there. If you give wrong sequence, it can destroy the execution.
+	\item You can write "quit" or "view" instead of file name to exit from the program or to generate the images till now respectively.
+	\item The entire execution process can be visualized in output.txt.
+	\item After printing a tree, you can view the images in the same directory. The respective file names are written in output.txt.
+	\item You can give multiple .txt files one after another. For example- in the first run, you can insert a few nodes and delete one of them to check how the tree rotates, and after seeing the result you can write another .txt file to delete the root node.
+	\item $5$ is used for quit. Do not write $5$ unnecessarily inside the .txt file. It is better to keep it at the end.
+	\item You can run the batch file or shell script to manually generate the images.
+\end{enumerate}
+
+\section{Testing}
+The input files, output files, graphviz files, png files, console sequence for insertions and deletions are attached in "insert cases" and "delete cases" folders respectively. Those files can be referred for better understanding. Here only a few cases are mentioned by covering all possible cases.
+
+\subsection{insertinput.txt}
+\begin{enumerate}
+	\item Insert $21,26,30,9,4,14,28,18,15,10,2,3,7$ in that order.
+	\item Print the tree after every insertion.
+	\item Quit
+\end{enumerate}
+
+\subsection{Console output}
+\begin{center}
+\includegraphics[scale=0.4]{console4.png}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.4]{console5.png}
+\end{center}
+
+\subsection{Various cases during insertion of this sequence}
+\subsubsection{$RR$-imbalance}
+\begin{center}
+\includegraphics[scale=0.5]{instruct1.png}
+\end{center}
+After Inserting 30 into it-
+\begin{center}
+\includegraphics[scale=0.5]{instruct2.png}
+\end{center}
+
+\subsubsection{$LL$-imbalance}
+\begin{center}
+\includegraphics[scale=0.5]{instruct3.png}
+\end{center}
+After inserting 4 into it-
+\begin{center}
+\includegraphics[scale=0.5]{instruct4.png}
+\end{center}
+
+\subsubsection{$LR$-imbalance}
+\begin{center}
+\includegraphics[scale=0.5]{instruct5.png}
+\end{center}
+After inserting 14 into it-
+\begin{center}
+\includegraphics[scale=0.5]{instruct6.png}
+\end{center}
+
+\subsubsection{$RL$-imbalance}
+\begin{center}
+\includegraphics[scale=0.5]{instruct7.png}
+\end{center}
+After inserting 10 into it-
+\begin{center}
+\includegraphics[scale=0.5]{instruct8.png}
+\end{center}
+
+\subsubsection{A case which involves rotation at root node}
+\begin{center}
+\includegraphics[scale=0.5]{instruct9.png}
+\end{center}
+After inserting 2 into it-
+\begin{center}
+\includegraphics[scale=0.5]{instruct10.png}
+\end{center}
+
+\subsection{deleteinput.txt}
+Here the insertions are not tested and the nodes are inserted in level order. For covering all kinds of cases, an AVL Tree with minimum possible nodes has been considered.
+\begin{enumerate}
+	\item Insert $60,50,80,20,55,75,82,10,32,53,56,73,76,81,83,7,12,30,40,52,54,57,72,74,78,84,6,8,$\newline$14,45,51,71,5$ in that order.
+	\item Print the tree.
+	\item Delete $5$.
+	\item Print the tree.
+	\item Delete $71$.
+	\item Print the tree.
+	\item Delete $76$.
+	\item Print the tree.
+	\item Delete $78$.
+	\item Print the tree.
+	\item Delete $80$.
+	\item Print the tree.
+	\item Delete $73$.
+	\item Print the tree.
+	\item Delete $6,8,14$ in that sequence.
+	\item Print the tree.
+	\item Delete $20$.
+	\item Print the tree.
+	\item Insert $5$.
+	\item Print the tree.
+	\item Delete $53$.
+	\item Print the tree.
+	\item Delete $32,45,54,75,82,51,84,72$ in that order.
+	\item Print the tree.
+	\item Delete $50$.
+	\item Print the tree.
+	\item Delete $30$.
+	\item Print the tree.
+	\item Delete $83$.
+	\item Print the tree.
+	\item Delete $81$.
+	\item Print the tree.
+	\item Delete $74$.
+	\item Print the tree.
+	\item Delete $60$.
+	\item Print the tree.
+	\item Delete $57$.
+	\item Print the tree.
+	\item Delete $56$.
+	\item Print the tree.
+	\item Delete $56$.
+	\item Print the tree.
+	\item Delete $55$.
+	\item Print the tree.
+	\item Delete $52$.
+	\item Print the tree.
+	\item Delete $40$.
+	\item Print the tree.
+	\item Delete $12$.
+	\item Print the tree.
+	\item Delete $10$.
+	\item Print the tree.
+	\item Delete $7$.
+	\item Print the tree.
+	\item Delete $5$.
+	\item Print the tree.
+	\item Quit
+\end{enumerate}
+
+\subsection{Console output}
+\begin{center}
+\includegraphics[scale=0.4]{console2.png}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.4]{console3.png}
+\end{center}
+
+\subsection{Various cases during deletion of this sequence}
+\subsubsection{Deleting the smallest node which is leaf}
+\begin{center}
+\includegraphics[scale=0.25]{destruct1.png}
+\end{center}
+After Deleting 5 from it-
+\begin{center}
+\includegraphics[scale=0.25]{destruct2.png}
+\end{center}
+
+\subsubsection{Deleting a node with single child}
+\begin{center}
+\includegraphics[scale=0.25]{destruct3.png}
+\end{center}
+After Deleting 76 from it-
+\begin{center}
+\includegraphics[scale=0.25]{destruct4.png}
+\end{center}
+
+\subsubsection{$LL$-imbalance which performs single rotation where balance factor of $rotate$ is 0}
+\begin{center}
+\includegraphics[scale=0.25]{destruct5.png}
+\end{center}
+After Deleting 78 from it-
+\begin{center}
+\includegraphics[scale=0.25]{destruct6.png}
+\end{center}
+
+\subsubsection{$LL$-imbalance which results in single rotation at root}
+\begin{center}
+\includegraphics[scale=0.25]{destruct7.png}
+\end{center}
+After Deleting 73 from it-
+\begin{center}
+\includegraphics[scale=0.25]{destruct8.png}
+\end{center}
+
+\subsubsection{$RR$-imbalance followed by $RL$-imbalance which results in double rotation at root}
+\begin{center}
+\includegraphics[scale=0.25]{destruct9.png}
+\end{center}
+After Deleting 20 from it-
+\begin{center}
+\includegraphics[scale=0.25]{destruct10.png}
+\end{center}
+
+\subsubsection{two $LL$-imbalances}
+\begin{center}
+\includegraphics[scale=0.3]{destruct11.png}
+\end{center}
+After Deleting 53 from it-
+\begin{center}
+\includegraphics[scale=0.3]{destruct12.png}
+\end{center}
+
+\subsubsection{$LR$-imbalance}
+\begin{center}
+\includegraphics[scale=0.4]{destruct13.png}
+\end{center}
+After Deleting 74 from it-
+\begin{center}
+\includegraphics[scale=0.4]{destruct14.png}
+\end{center}
+
+\end{document}

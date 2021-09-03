@@ -1,4 +1,4 @@
-void printMessage()
+void printMessage(string outputFileName)
 {
 	/*The initial message printed just after starting the execution*/
 	cout << endl << endl << "-----------------------------------------" << endl;
@@ -17,7 +17,7 @@ void printMessage()
 	cout << "              INSTRUCTIONS" << endl;
 	cout << "-----------------------------------------" << endl;
 	cout << "1. Write a .txt file in mentioned format\nand enter the file name below" << endl;
-	cout << "2. You can check execution details\nin \"output.txt\"" << endl;
+	cout << "2. You can check execution details\nin \""<< outputFileName <<"\"" << endl;
 }
 
 void generatePNG(int os)
