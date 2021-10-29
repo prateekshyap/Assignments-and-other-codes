@@ -1,0 +1,203 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,38)"; };
+{rank = same; "5
+(2,37)"; "9
+(16,23)"; };
+{rank = same; "3
+(3,36)"; "2
+(10,13)"; "11
+(6,33)"; "6
+(14,25)"; "14
+(17,22)"; "18
+(5,34)"; };
+{rank = same; "4
+(4,35)"; "19
+(7,28)"; "1
+(11,12)"; "8
+(9,26)"; "13
+(29,32)"; "16
+(15,24)"; "7
+(8,27)"; "15
+(18,21)"; };
+{rank = same; "12
+(30,31)"; "10
+(19,20)"; };
+{rank = same; };
+{rank = same; "17
+(39,40)"; };
+{rank = same; };
+"0
+(1,38)"->"5
+(2,37)"[label="7" color = "green"];
+"0
+(1,38)"->"9
+(16,23)"[label="5" color = "blue" style = "dashed"];
+"5
+(2,37)"->"3
+(3,36)"[label="39" color = "green"];
+"5
+(2,37)"->"2
+(10,13)"[label="66" color = "blue" style = "dashed"];
+"5
+(2,37)"->"11
+(6,33)"[label="93" color = "blue" style = "dashed"];
+"9
+(16,23)"->"6
+(14,25)"[label="81" color = "red" style = "dashed"];
+"9
+(16,23)"->"14
+(17,22)"[label="78" color = "green"];
+"9
+(16,23)"->"3
+(3,36)"[label="67" color = "red" style = "dashed"];
+"9
+(16,23)"->"18
+(5,34)"[label="10" color = "red" style = "dashed"];
+"3
+(3,36)"->"4
+(4,35)"[label="18" color = "green"];
+"3
+(3,36)"->"19
+(7,28)"[label="81" color = "blue" style = "dashed"];
+"2
+(10,13)"->"1
+(11,12)"[label="36" color = "green"];
+"2
+(10,13)"->"8
+(9,26)"[label="37" color = "red" style = "dashed"];
+"2
+(10,13)"->"8
+(9,26)"[label="9" color = "red" style = "dashed"];
+"11
+(6,33)"->"0
+(1,38)"[label="59" color = "red" style = "dashed"];
+"11
+(6,33)"->"19
+(7,28)"[label="31" color = "green"];
+"11
+(6,33)"->"13
+(29,32)"[label="98" color = "green"];
+"6
+(14,25)"->"16
+(15,24)"[label="82" color = "green"];
+"6
+(14,25)"->"7
+(8,27)"[label="82" color = "red" style = "dashed"];
+"14
+(17,22)"->"14
+(17,22)"[label="52" color = "red" style = "dashed"];
+"14
+(17,22)"->"15
+(18,21)"[label="32" color = "green"];
+"14
+(17,22)"->"9
+(16,23)"[label="76" color = "red" style = "dashed"];
+"14
+(17,22)"->"6
+(14,25)"[label="30" color = "red" style = "dashed"];
+"14
+(17,22)"->"4
+(4,35)"[label="36" color = "red" style = "dashed"];
+"18
+(5,34)"->"11
+(6,33)"[label="25" color = "green"];
+"18
+(5,34)"->"19
+(7,28)"[label="70" color = "blue" style = "dashed"];
+"18
+(5,34)"->"2
+(10,13)"[label="69" color = "blue" style = "dashed"];
+"18
+(5,34)"->"8
+(9,26)"[label="27" color = "blue" style = "dashed"];
+"4
+(4,35)"->"18
+(5,34)"[label="85" color = "green"];
+"4
+(4,35)"->"4
+(4,35)"[label="73" color = "red" style = "dashed"];
+"19
+(7,28)"->"7
+(8,27)"[label="72" color = "green"];
+"19
+(7,28)"->"1
+(11,12)"[label="80" color = "blue" style = "dashed"];
+"1
+(11,12)"->"2
+(10,13)"[label="57" color = "red" style = "dashed"];
+"1
+(11,12)"->"2
+(10,13)"[label="36" color = "red" style = "dashed"];
+"8
+(9,26)"->"2
+(10,13)"[label="98" color = "green"];
+"8
+(9,26)"->"6
+(14,25)"[label="26" color = "green"];
+"13
+(29,32)"->"12
+(30,31)"[label="22" color = "green"];
+"13
+(29,32)"->"10
+(19,20)"[label="69" color = "orange" style = "dashed"];
+"13
+(29,32)"->"3
+(3,36)"[label="34" color = "red" style = "dashed"];
+"13
+(29,32)"->"5
+(2,37)"[label="50" color = "red" style = "dashed"];
+"16
+(15,24)"->"9
+(16,23)"[label="38" color = "green"];
+"7
+(8,27)"->"8
+(9,26)"[label="23" color = "green"];
+"7
+(8,27)"->"16
+(15,24)"[label="89" color = "blue" style = "dashed"];
+"7
+(8,27)"->"5
+(2,37)"[label="7" color = "red" style = "dashed"];
+"7
+(8,27)"->"7
+(8,27)"[label="15" color = "red" style = "dashed"];
+"15
+(18,21)"->"15
+(18,21)"[label="77" color = "red" style = "dashed"];
+"15
+(18,21)"->"1
+(11,12)"[label="93" color = "orange" style = "dashed"];
+"15
+(18,21)"->"11
+(6,33)"[label="98" color = "red" style = "dashed"];
+"15
+(18,21)"->"10
+(19,20)"[label="50" color = "green"];
+"15
+(18,21)"->"1
+(11,12)"[label="100" color = "orange" style = "dashed"];
+"15
+(18,21)"->"11
+(6,33)"[label="56" color = "red" style = "dashed"];
+"12
+(30,31)"->"3
+(3,36)"[label="40" color = "red" style = "dashed"];
+"10
+(19,20)"->"15
+(18,21)"[label="39" color = "red" style = "dashed"];
+"10
+(19,20)"->"18
+(5,34)"[label="1" color = "red" style = "dashed"];
+"17
+(39,40)"->"15
+(18,21)"[label="50" color = "orange" style = "dashed"];
+"17
+(39,40)"->"10
+(19,20)"[label="7" color = "orange" style = "dashed"];
+"17
+(39,40)"->"10
+(19,20)"[label="70" color = "orange" style = "dashed"];
+}

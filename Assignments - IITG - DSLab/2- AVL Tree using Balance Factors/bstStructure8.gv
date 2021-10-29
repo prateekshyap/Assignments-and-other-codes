@@ -1,0 +1,30 @@
+digraph G {
+node [shape = record, height = .1, color = "black"];
+-1[label = "<L> |<D> -1,0|<R> "];
+14[label = "<L> |<D> 14,0|<R> "];
+4[label = "<L> |<D> 4,0|<R> "];
+21[label = "<L> |<D> 21,0|<R> "];
+3[label = "<L> |<D> 3,1|<R> "];
+9[label = "<L> |<D> 9,0|<R> "];
+15[label = "<L> |<D> 15,-1|<R> "];
+28[label = "<L> |<D> 28,0|<R> "];
+2[label = "<L> |<D> 2,0|<R> ",fontcolor="red"];
+7[label = "<L> |<D> 7,0|<R> ",fontcolor="red"];
+10[label = "<L> |<D> 10,0|<R> ",fontcolor="red"];
+18[label = "<L> |<D> 18,0|<R> ",fontcolor="red"];
+26[label = "<L> |<D> 26,0|<R> ",fontcolor="red"];
+30[label = "<L> |<D> 30,0|<R> ",fontcolor="red"];
+"-1":R -> "14":D;
+"14":L -> "4":D;
+"14":R -> "21":D;
+"4":L -> "3":D;
+"4":R -> "9":D;
+"21":L -> "15":D;
+"21":R -> "28":D;
+"3":L -> "2":D;
+"9":L -> "7":D;
+"9":R -> "10":D;
+"15":R -> "18":D;
+"28":L -> "26":D;
+"28":R -> "30":D;
+}

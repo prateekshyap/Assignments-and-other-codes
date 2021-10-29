@@ -1,0 +1,56 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,395)"; };
+{rank = same; "(3,423)"; };
+{rank = same; "(11,333)"; };
+{rank = same; "(14,46)"; };
+{rank = same; "(10,146)"; "(21,123)"; };
+{rank = same; "(12,227)"; "(13,181)"; };
+{rank = same; "(7,296)"; "(24,235)"; };
+{rank = same; "(23,314)"; "(5,383)"; "(18,37)"; "(22,241)"; };
+{rank = same; "(16,426)"; "(6,45)"; "(2,324)"; };
+{rank = same; "(19,114)"; "(15,67)"; "(20,336)"; "(8,176)"; };
+{rank = same; "(9,154)"; "(4,416)"; };
+{rank = same; };
+{rank = same; "(1,8)"; };
+{rank = same; };
+{rank = same; "(17,0)"; };
+{rank = same; };
+"(0,395)"->"(3,423)"[label="28" color = "blue"];
+"(3,423)"->"(11,333)"[label="28" color = "red" style = "dashed" ];
+"(11,333)"->"(14,46)"[label="24" color = "red" style = "dashed" ];
+"(14,46)"->"(10,146)"[label="100" color = "blue"];
+"(14,46)"->"(21,123)"[label="77" color = "blue"];
+"(10,146)"->"(12,227)"[label="81" color = "blue"];
+"(21,123)"->"(13,181)"[label="58" color = "blue"];
+"(12,227)"->"(7,296)"[label="69" color = "blue"];
+"(13,181)"->"(24,235)"[label="54" color = "blue"];
+"(7,296)"->"(23,314)"[label="18" color = "blue"];
+"(7,296)"->"(5,383)"[label="87" color = "blue"];
+"(24,235)"->"(18,37)"[label="30" color = "red" style = "dashed" ];
+"(24,235)"->"(22,241)"[label="6" color = "blue"];
+"(23,314)"->"(0,395)"[label="81" color = "blue"];
+"(5,383)"->"(14,46)"[label="27" color = "red" style = "dashed" ];
+"(5,383)"->"(16,426)"[label="43" color = "blue"];
+"(18,37)"->"(6,45)"[label="8" color = "blue"];
+"(18,37)"->"(14,46)"[label="9" color = "blue"];
+"(22,241)"->"(2,324)"[label="83" color = "blue"];
+"(22,241)"->"(6,45)"[label="24" color = "red" style = "dashed" ];
+"(16,426)"
+"(6,45)"->"(19,114)"[label="69" color = "blue"];
+"(6,45)"->"(15,67)"[label="48" color = "red" style = "dashed" ];
+"(2,324)"->"(11,333)"[label="9" color = "blue"];
+"(2,324)"->"(20,336)"[label="12" color = "blue"];
+"(2,324)"->"(8,176)"[label="45" color = "red" style = "dashed" ];
+"(19,114)"->"(21,123)"[label="79" color = "red" style = "dashed" ];
+"(19,114)"->"(9,154)"[label="40" color = "blue"];
+"(15,67)"
+"(20,336)"->"(4,416)"[label="80" color = "blue"];
+"(8,176)"->"(12,227)"[label="74" color = "red" style = "dashed" ];
+"(9,154)"->"(8,176)"[label="22" color = "blue"];
+"(4,416)"->"(2,324)"[label="50" color = "red" style = "dashed" ];
+"(1,8)"->"(18,37)"[label="29" color = "blue"];
+"(1,8)"->"(15,67)"[label="59" color = "blue"];
+"(17,0)"->"(1,8)"[label="8" color = "blue"];
+}

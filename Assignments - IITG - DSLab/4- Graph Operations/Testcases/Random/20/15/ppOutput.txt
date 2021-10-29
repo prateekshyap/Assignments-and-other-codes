@@ -1,0 +1,144 @@
+Execution started at: Thu Oct 28 00:53:52 2021
+
+Mode selection
+
+Entered Build mode
+
+Creating new graph (input file name- randomInput0.txt)
+Printing graph with file Name- pp0.png
+Graphviz file can be found with file name- pp0.gv
+
+Exited Build mode
+
+Mode selection
+
+Entered Operations mode
+
+
+Finding minimal graph
+Order-
+0 14 13 6 9 11 15 18 16 3 7 17 12 1 2 10 5 4 8 19 
+
+0 -> 14 Tree Edge
+14 -> 13 Tree Edge
+13 -> 6 Tree Edge
+6 -> 9 Tree Edge
+6 -> 11 Tree Edge
+6 -> 15 Tree Edge
+15 -> 13 Back Edge
+15 -> 18 Tree Edge
+18 -> 16 Tree Edge
+16 -> 14 Back Edge
+16 -> 3 Tree Edge
+3 -> 11 Cross Edge
+16 -> 0 Back Edge
+15 -> 13 Back Edge
+6 -> 7 Tree Edge
+7 -> 17 Tree Edge
+6 -> 12 Tree Edge
+12 -> 6 Back Edge
+6 -> 3 Forward Edge
+14 -> 15 Forward Edge
+0 -> 14 Forward Edge
+2 -> 18 Cross Edge
+2 -> 10 Tree Edge
+10 -> 5 Tree Edge
+5 -> 3 Cross Edge
+10 -> 12 Cross Edge
+4 -> 10 Cross Edge
+19 -> 1 Cross Edge
+Printing graph of edge classifications with file Name- pp1.png
+Graphviz file can be found with file name- pp1.gv
+9 
+11 
+3 
+17 
+7 
+12 16 18 15 6 13 14 0 
+1 
+5 
+10 
+2 
+4 
+8 
+19 
+Printing strongly connected components graph with file Name- pp2.png
+Graphviz file can be found with file name- pp2.gv
+Printing directed acyclic graph with file Name- pp3.png
+Graphviz file can be found with file name- pp3.gv
+Printing minimal graph with file Name- pp4.png
+Graphviz file can be found with file name- pp4.gv
+Replaced original graph with minimal graph
+
+Exited Operations mode
+
+Mode selection
+
+Mode selection
+
+Entered Operations mode
+
+
+DFS
+Order-
+0 14 13 6 12 15 18 16 9 11 7 17 3 1 2 10 5 4 8 19 
+
+0 -> 14 Tree Edge
+14 -> 13 Tree Edge
+13 -> 6 Tree Edge
+6 -> 12 Tree Edge
+12 -> 6 Back Edge
+6 -> 15 Tree Edge
+15 -> 18 Tree Edge
+18 -> 16 Tree Edge
+16 -> 0 Back Edge
+6 -> 9 Tree Edge
+6 -> 11 Tree Edge
+6 -> 7 Tree Edge
+7 -> 17 Tree Edge
+6 -> 3 Tree Edge
+3 -> 11 Cross Edge
+2 -> 18 Cross Edge
+2 -> 10 Tree Edge
+10 -> 5 Tree Edge
+5 -> 3 Cross Edge
+10 -> 12 Cross Edge
+4 -> 10 Cross Edge
+19 -> 1 Cross Edge
+Printing graph with file Name- pp5.png
+Graphviz file can be found with file name- pp5.gv
+
+Running Tarjan's Algorithm
+9 
+11 
+17 
+7 
+3 
+16 18 15 12 6 13 14 0 
+1 
+5 
+10 
+2 
+4 
+8 
+19 
+Printing graph with file Name- pp6.png
+Graphviz file can be found with file name- pp6.gv
+
+Running Dijkstra's Algorithm with source 0
+Costs-
+0 1000000000 1000000000 133 1000000000 1000000000 78 171 1000000000 147 1000000000 164 120 28 7 177 296 268 197 1000000000 
+Parents-
+-1 -1 -1 6 -1 -1 13 6 -1 6 -1 6 6 14 0 6 18 7 15 -1 
+Printing graph with file Name- pp7.png
+Graphviz file can be found with file name- pp7.gv
+
+Exited Operations mode
+
+Mode selection
+
+
+Quit
+
+Execution ended at: Thu Oct 28 00:54:53 2021
+

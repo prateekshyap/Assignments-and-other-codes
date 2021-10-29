@@ -1,0 +1,148 @@
+Execution started at: Thu Oct 28 15:07:53 2021
+
+Mode selection
+
+Entered Build mode
+
+Creating new graph (input file name- Testcases/Random/20/30/randomInput0.txt)
+Printing graph with file Name- pp0.png
+Graphviz file can be found with file name- pp0.gv
+
+Exited Build mode
+
+Mode selection
+
+Entered Operations mode
+
+
+Finding minimal graph
+Order-
+0 5 3 4 18 11 19 7 8 2 1 6 16 9 14 15 10 13 12 17 
+
+0 -> 5 Tree Edge
+5 -> 3 Tree Edge
+3 -> 4 Tree Edge
+4 -> 18 Tree Edge
+18 -> 11 Tree Edge
+11 -> 0 Back Edge
+11 -> 19 Tree Edge
+19 -> 7 Tree Edge
+7 -> 8 Tree Edge
+8 -> 2 Tree Edge
+2 -> 1 Tree Edge
+1 -> 2 Back Edge
+1 -> 2 Back Edge
+2 -> 8 Back Edge
+2 -> 8 Back Edge
+8 -> 6 Tree Edge
+6 -> 16 Tree Edge
+16 -> 9 Tree Edge
+9 -> 6 Back Edge
+9 -> 14 Tree Edge
+14 -> 14 Back Edge
+14 -> 15 Tree Edge
+15 -> 15 Back Edge
+15 -> 1 Cross Edge
+15 -> 11 Back Edge
+15 -> 10 Tree Edge
+10 -> 15 Back Edge
+10 -> 18 Back Edge
+15 -> 1 Cross Edge
+15 -> 11 Back Edge
+14 -> 9 Back Edge
+14 -> 6 Back Edge
+14 -> 4 Back Edge
+9 -> 3 Back Edge
+9 -> 18 Back Edge
+6 -> 7 Back Edge
+7 -> 16 Forward Edge
+7 -> 5 Back Edge
+7 -> 7 Back Edge
+19 -> 1 Forward Edge
+11 -> 13 Tree Edge
+13 -> 12 Tree Edge
+12 -> 3 Back Edge
+13 -> 10 Cross Edge
+13 -> 3 Back Edge
+13 -> 5 Back Edge
+18 -> 19 Forward Edge
+18 -> 2 Forward Edge
+18 -> 8 Forward Edge
+4 -> 4 Back Edge
+3 -> 19 Forward Edge
+5 -> 2 Forward Edge
+5 -> 11 Forward Edge
+0 -> 9 Forward Edge
+17 -> 15 Cross Edge
+17 -> 10 Cross Edge
+17 -> 10 Cross Edge
+Printing graph of edge classifications with file Name- pp1.png
+Graphviz file can be found with file name- pp1.gv
+12 13 10 15 14 9 16 6 1 2 8 7 19 11 18 4 3 5 0 
+17 
+Printing strongly connected components graph with file Name- pp2.png
+Graphviz file can be found with file name- pp2.gv
+Printing directed acyclic graph with file Name- pp3.png
+Graphviz file can be found with file name- pp3.gv
+Printing minimal graph with file Name- pp4.png
+Graphviz file can be found with file name- pp4.gv
+Replaced original graph with minimal graph
+
+DFS
+Order-
+0 5 3 4 18 11 13 12 10 19 7 8 6 16 9 14 15 1 2 17 
+
+0 -> 5 Tree Edge
+5 -> 3 Tree Edge
+3 -> 4 Tree Edge
+4 -> 18 Tree Edge
+18 -> 11 Tree Edge
+11 -> 13 Tree Edge
+13 -> 12 Tree Edge
+12 -> 3 Back Edge
+13 -> 10 Tree Edge
+10 -> 18 Back Edge
+13 -> 5 Back Edge
+11 -> 19 Tree Edge
+19 -> 7 Tree Edge
+7 -> 8 Tree Edge
+8 -> 6 Tree Edge
+6 -> 16 Tree Edge
+16 -> 9 Tree Edge
+9 -> 14 Tree Edge
+14 -> 15 Tree Edge
+15 -> 10 Cross Edge
+15 -> 1 Tree Edge
+1 -> 2 Tree Edge
+2 -> 8 Back Edge
+14 -> 4 Back Edge
+9 -> 3 Back Edge
+7 -> 5 Back Edge
+11 -> 0 Back Edge
+17 -> 15 Cross Edge
+Printing graph with file Name- pp5.png
+Graphviz file can be found with file name- pp5.gv
+
+Running Tarjan's Algorithm
+2 1 15 14 9 16 6 8 7 19 10 12 13 11 18 4 3 5 0 
+17 
+Printing graph with file Name- pp6.png
+Graphviz file can be found with file name- pp6.gv
+
+Running Dijkstra's Algorithm with source 17
+Costs-
+185 143 200 231 249 192 263 229 237 383 100 126 246 224 461 50 345 0 101 157 
+Parents-
+11 15 1 5 3 0 8 19 2 16 15 18 13 11 9 17 6 -1 10 11 
+Printing graph with file Name- pp7.png
+Graphviz file can be found with file name- pp7.gv
+
+Exited Operations mode
+
+Mode selection
+
+
+Quit
+
+Execution ended at: Thu Oct 28 15:08:21 2021
+

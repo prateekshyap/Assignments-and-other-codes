@@ -1,0 +1,25 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,0)"; };
+{rank = same; "(1,6)"; "(3,3)"; };
+{rank = same; "(2,9)"; "(4,8)"; };
+{rank = same; "(5,13)"; };
+{rank = same; "(6,16)"; "(7,17)"; "(8,15)"; "(9,18)"; };
+{rank = same; };
+"(0,0)"->"(1,6)"[label="6" color = "blue"];
+"(0,0)"->"(3,3)"[label="3" color = "blue"];
+"(1,6)"->"(2,9)"[label="4" color = "red" style = "dashed" ];
+"(1,6)"->"(4,8)"[label="2" color = "blue"];
+"(3,3)"->"(2,9)"[label="6" color = "blue"];
+"(2,9)"->"(0,0)"[label="4" color = "red" style = "dashed" ];
+"(4,8)"->"(5,13)"[label="5" color = "blue"];
+"(5,13)"->"(6,16)"[label="3" color = "blue"];
+"(5,13)"->"(7,17)"[label="4" color = "blue"];
+"(5,13)"->"(8,15)"[label="2" color = "blue"];
+"(5,13)"->"(9,18)"[label="5" color = "blue"];
+"(6,16)"->"(4,8)"[label="8" color = "red" style = "dashed" ];
+"(7,17)"
+"(8,15)"
+"(9,18)"
+}

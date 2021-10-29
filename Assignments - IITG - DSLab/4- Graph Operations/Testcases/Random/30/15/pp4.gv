@@ -1,0 +1,63 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 7; 27; 3; };
+{rank = same; 2; 9; 18; 29; 17; 16; 4; };
+{rank = same; 6; 14; 21; 10; 26; 13; };
+{rank = same; 20; 15; 11; 1; 5; };
+{rank = same; 12; 23; 19; 25; };
+{rank = same; 22; };
+{rank = same; 24; };
+{rank = same; };
+{rank = same; 8; };
+{rank = same; };
+{rank = same; 28; };
+{rank = same; };
+0->7[label="95"];
+0->27[label="30"];
+0->3[label="95"];
+7->2[label="37"];
+27->9[label="80"];
+27->18[label="69"];
+3->29[label="15"];
+3->17[label="34"];
+3->16[label="77"];
+3->7[label="77"];
+3->4[label="77"];
+2->6[label="97"];
+2->0[label="39"];
+9->14[label="16"];
+18->21[label="58"];
+29->10[label="60"];
+29->21[label="33"];
+17->9[label="31"];
+16->26[label="17"];
+16->13[label="81"];
+4
+6->26[label="13"];
+14->20[label="13"];
+21->15[label="29"];
+21->26[label="36"];
+10->11[label="14"];
+10->1[label="12"];
+26->5[label="68"];
+13
+20->12[label="61"];
+15->7[label="3"];
+15->23[label="57"];
+11->19[label="62"];
+1->6[label="52"];
+5->1[label="74"];
+5->25[label="16"];
+12->15[label="35"];
+23
+19->22[label="27"];
+25->20[label="75"];
+25->22[label="33"];
+25->19[label="39"];
+22->24[label="19"];
+24->21[label="5"];
+8->6[label="5"];
+28->29[label="1"];
+}

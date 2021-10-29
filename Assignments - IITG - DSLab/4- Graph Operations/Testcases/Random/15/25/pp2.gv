@@ -1,0 +1,62 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 9; };
+{rank = same; 1; };
+{rank = same; 2; };
+{rank = same; 3; 13; 6; 7; };
+{rank = same; 10; 12; 5; };
+{rank = same; 8; };
+{rank = same; };
+{rank = same; 4; };
+{rank = same; 11; };
+{rank = same; };
+{rank = same; 14; };
+{rank = same; };
+9 [color = "red"];
+0 [color = "blue"];
+1 [color = "green"];
+12 [color = "yellow"];
+13 [color = "magenta"];
+5 [color = "aqua"];
+6 [color = "brown"];
+7 [color = "crimson"];
+8 [color = "coral"];
+10 [color = "coral"];
+3 [color = "coral"];
+2 [color = "coral"];
+4 [color = "darkgoldenrod"];
+11 [color = "darkgreen"];
+14 [color = "darkkhaki"];
+0->9[label="63" color = "grey" style = "dashed"];
+9
+1
+2->2[label="33" color = "coral"];
+2->3[label="79" color = "coral"];
+2->13[label="12" color = "grey" style = "dashed"];
+2->6[label="5" color = "grey" style = "dashed"];
+2->7[label="41" color = "grey" style = "dashed"];
+2->0[label="93" color = "grey" style = "dashed"];
+3->2[label="5" color = "coral"];
+3->10[label="49" color = "coral"];
+13->12[label="26" color = "grey" style = "dashed"];
+6->0[label="25" color = "grey" style = "dashed"];
+6->1[label="27" color = "grey" style = "dashed"];
+6->5[label="77" color = "grey" style = "dashed"];
+6->0[label="38" color = "grey" style = "dashed"];
+7->0[label="49" color = "grey" style = "dashed"];
+7->7[label="32" color = "crimson"];
+7->5[label="20" color = "grey" style = "dashed"];
+10->0[label="48" color = "grey" style = "dashed"];
+10->8[label="34" color = "coral"];
+12
+5->12[label="56" color = "grey" style = "dashed"];
+5->5[label="14" color = "aqua"];
+8->3[label="41" color = "coral"];
+8->13[label="86" color = "grey" style = "dashed"];
+4
+11->9[label="12" color = "grey" style = "dashed"];
+11->5[label="71" color = "grey" style = "dashed"];
+14->12[label="86" color = "grey" style = "dashed"];
+}

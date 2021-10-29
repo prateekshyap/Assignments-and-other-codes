@@ -1,0 +1,38 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,10)"; };
+{rank = same; "1
+(2,7)"; "2
+(8,9)"; "3
+(3,6)"; "4
+(4,5)"; };
+{rank = same; };
+"0
+(1,10)"->"1
+(2,7)"[label="3" color = "green"];
+"0
+(1,10)"->"2
+(8,9)"[label="4" color = "green"];
+"0
+(1,10)"->"3
+(3,6)"[label="3" color = "blue" style = "dashed"];
+"0
+(1,10)"->"4
+(4,5)"[label="4" color = "blue" style = "dashed"];
+"1
+(2,7)"->"3
+(3,6)"[label="5" color = "green"];
+"2
+(8,9)"->"3
+(3,6)"[label="7" color = "orange" style = "dashed"];
+"2
+(8,9)"->"4
+(4,5)"[label="6" color = "orange" style = "dashed"];
+"3
+(3,6)"->"4
+(4,5)"[label="4" color = "green"];
+"4
+(4,5)"
+}

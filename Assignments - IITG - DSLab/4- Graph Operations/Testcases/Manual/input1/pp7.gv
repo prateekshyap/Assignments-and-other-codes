@@ -1,0 +1,52 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,inf)"; };
+{rank = same; "(1,inf)"; };
+{rank = same; "(2,inf)"; "(3,inf)"; };
+{rank = same; "(4,inf)"; };
+{rank = same; };
+{rank = same; "(5,inf)"; };
+{rank = same; "(6,inf)"; };
+{rank = same; "(7,inf)"; "(8,inf)"; "(9,inf)"; "(11,inf)"; };
+{rank = same; "(10,inf)"; };
+{rank = same; "(12,0)"; };
+{rank = same; "(13,6)"; "(15,3)"; };
+{rank = same; "(14,9)"; "(16,8)"; };
+{rank = same; "(17,13)"; };
+{rank = same; "(18,16)"; "(19,17)"; "(20,15)"; };
+{rank = same; "(21,19)"; };
+{rank = same; };
+{rank = same; "(22,inf)"; };
+"(0,inf)"->"(1,inf)"[label="10" color = "red" style = "dashed" ];
+"(1,inf)"->"(2,inf)"[label="1" color = "red" style = "dashed" ];
+"(1,inf)"->"(3,inf)"[label="2" color = "red" style = "dashed" ];
+"(2,inf)"->"(1,inf)"[label="4" color = "red" style = "dashed" ];
+"(3,inf)"->"(4,inf)"[label="7" color = "red" style = "dashed" ];
+"(4,inf)"->"(3,inf)"[label="9" color = "red" style = "dashed" ];
+"(5,inf)"->"(6,inf)"[label="4" color = "red" style = "dashed" ];
+"(6,inf)"->"(7,inf)"[label="8" color = "red" style = "dashed" ];
+"(6,inf)"->"(8,inf)"[label="5" color = "red" style = "dashed" ];
+"(6,inf)"->"(9,inf)"[label="7" color = "red" style = "dashed" ];
+"(6,inf)"->"(11,inf)"[label="3" color = "red" style = "dashed" ];
+"(7,inf)"->"(5,inf)"[label="3" color = "red" style = "dashed" ];
+"(8,inf)"->"(10,inf)"[label="5" color = "red" style = "dashed" ];
+"(9,inf)"->"(10,inf)"[label="8" color = "red" style = "dashed" ];
+"(11,inf)"
+"(10,inf)"
+"(12,0)"->"(13,6)"[label="6" color = "blue"];
+"(12,0)"->"(15,3)"[label="3" color = "blue"];
+"(13,6)"->"(14,9)"[label="4" color = "red" style = "dashed" ];
+"(13,6)"->"(16,8)"[label="2" color = "blue"];
+"(15,3)"->"(14,9)"[label="6" color = "blue"];
+"(14,9)"->"(12,0)"[label="4" color = "red" style = "dashed" ];
+"(16,8)"->"(17,13)"[label="5" color = "blue"];
+"(17,13)"->"(18,16)"[label="3" color = "blue"];
+"(17,13)"->"(19,17)"[label="4" color = "blue"];
+"(17,13)"->"(20,15)"[label="2" color = "blue"];
+"(18,16)"->"(16,8)"[label="8" color = "red" style = "dashed" ];
+"(19,17)"->"(21,19)"[label="3" color = "red" style = "dashed" ];
+"(20,15)"->"(21,19)"[label="4" color = "blue"];
+"(21,19)"->"(20,15)"[label="7" color = "red" style = "dashed" ];
+"(22,inf)"
+}

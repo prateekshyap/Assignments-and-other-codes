@@ -1,0 +1,45 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,0)"; };
+{rank = same; "(7,42)"; "(9,63)"; };
+{rank = same; "(2,69)"; "(18,94)"; "(8,67)"; };
+{rank = same; "(11,113)"; "(17,146)"; };
+{rank = same; "(12,176)"; };
+{rank = same; "(15,181)"; "(16,220)"; };
+{rank = same; "(1,278)"; "(13,227)"; };
+{rank = same; "(3,356)"; "(4,242)"; };
+{rank = same; "(6,407)"; "(10,366)"; "(14,338)"; "(5,298)"; };
+{rank = same; "(19,353)"; };
+{rank = same; };
+"(0,0)"->"(7,42)"[label="42" color = "blue"];
+"(0,0)"->"(9,63)"[label="63" color = "blue"];
+"(7,42)"->"(2,69)"[label="27" color = "blue"];
+"(7,42)"->"(18,94)"[label="52" color = "blue"];
+"(9,63)"->"(8,67)"[label="4" color = "blue"];
+"(2,69)"->"(11,113)"[label="89" color = "red" style = "dashed" ];
+"(18,94)"->"(11,113)"[label="19" color = "blue"];
+"(8,67)"->"(17,146)"[label="79" color = "blue"];
+"(11,113)"
+"(17,146)"->"(12,176)"[label="30" color = "blue"];
+"(12,176)"->"(15,181)"[label="5" color = "blue"];
+"(12,176)"->"(16,220)"[label="44" color = "blue"];
+"(12,176)"->"(11,113)"[label="11" color = "red" style = "dashed" ];
+"(15,181)"->"(1,278)"[label="97" color = "blue"];
+"(15,181)"->"(9,63)"[label="43" color = "red" style = "dashed" ];
+"(16,220)"->"(13,227)"[label="7" color = "blue"];
+"(1,278)"->"(3,356)"[label="78" color = "blue"];
+"(1,278)"->"(7,42)"[label="8" color = "red" style = "dashed" ];
+"(13,227)"->"(4,242)"[label="15" color = "blue"];
+"(3,356)"->"(6,407)"[label="75" color = "red" style = "dashed" ];
+"(3,356)"->"(10,366)"[label="10" color = "blue"];
+"(4,242)"->"(14,338)"[label="96" color = "blue"];
+"(4,242)"->"(16,220)"[label="62" color = "red" style = "dashed" ];
+"(4,242)"->"(5,298)"[label="56" color = "blue"];
+"(6,407)"->"(17,146)"[label="68" color = "red" style = "dashed" ];
+"(6,407)"->"(2,69)"[label="63" color = "red" style = "dashed" ];
+"(10,366)"->"(6,407)"[label="41" color = "blue"];
+"(14,338)"->"(19,353)"[label="15" color = "blue"];
+"(5,298)"
+"(19,353)"->"(10,366)"[label="93" color = "red" style = "dashed" ];
+}

@@ -1,0 +1,12 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 1; };
+{rank = same; 2; };
+{rank = same; };
+0
+1
+2->1[label="3"];
+2->0[label="4"];
+}

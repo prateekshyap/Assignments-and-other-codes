@@ -1,0 +1,110 @@
+Execution started at: Thu Oct 28 00:02:30 2021
+
+Mode selection
+
+Entered Build mode
+
+Creating new graph (input file name- randomInput0.txt)
+Printing graph with file Name- pp0.png
+Graphviz file can be found with file name- pp0.gv
+
+Exited Build mode
+
+Mode selection
+
+Entered Operations mode
+
+
+Finding minimal graph
+Order-
+0 6 3 4 9 8 5 1 2 7 
+
+0 -> 6 Tree Edge
+6 -> 3 Tree Edge
+6 -> 4 Tree Edge
+4 -> 9 Tree Edge
+9 -> 8 Tree Edge
+4 -> 6 Back Edge
+4 -> 5 Tree Edge
+4 -> 0 Back Edge
+4 -> 9 Forward Edge
+4 -> 8 Forward Edge
+0 -> 4 Forward Edge
+0 -> 0 Back Edge
+1 -> 4 Cross Edge
+7 -> 4 Cross Edge
+7 -> 9 Cross Edge
+Printing graph of edge classifications with file Name- pp1.png
+Graphviz file can be found with file name- pp1.gv
+3 
+8 
+9 
+5 
+4 6 0 
+1 
+2 
+7 
+Printing strongly connected components graph with file Name- pp2.png
+Graphviz file can be found with file name- pp2.gv
+Printing directed acyclic graph with file Name- pp3.png
+Graphviz file can be found with file name- pp3.gv
+Printing minimal graph with file Name- pp4.png
+Graphviz file can be found with file name- pp4.gv
+Replaced original graph with minimal graph
+
+Exited Operations mode
+
+Mode selection
+
+Mode selection
+
+Entered Operations mode
+
+
+DFS
+Order-
+0 6 4 9 8 5 3 1 2 7 
+
+0 -> 6 Tree Edge
+6 -> 4 Tree Edge
+4 -> 0 Back Edge
+4 -> 9 Tree Edge
+9 -> 8 Tree Edge
+4 -> 5 Tree Edge
+4 -> 8 Forward Edge
+6 -> 3 Tree Edge
+1 -> 4 Cross Edge
+7 -> 4 Cross Edge
+7 -> 9 Cross Edge
+Printing graph with file Name- pp5.png
+Graphviz file can be found with file name- pp5.gv
+
+Running Tarjan's Algorithm
+8 
+9 
+5 
+3 
+4 6 0 
+1 
+2 
+7 
+Printing graph with file Name- pp6.png
+Graphviz file can be found with file name- pp6.gv
+
+Running Dijkstra's Algorithm with source 4
+Costs-
+26 1000000000 1000000000 147 0 1 122 1000000000 81 40 
+Parents-
+4 -1 -1 6 -1 4 0 -1 9 4 
+Printing graph with file Name- pp7.png
+Graphviz file can be found with file name- pp7.gv
+
+Exited Operations mode
+
+Mode selection
+
+
+Quit
+
+Execution ended at: Thu Oct 28 00:03:39 2021
+

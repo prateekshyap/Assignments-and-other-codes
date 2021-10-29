@@ -1,0 +1,63 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,18)"; };
+{rank = same; "2
+(2,17)"; };
+{rank = same; "5
+(3,10)"; "3
+(11,16)"; };
+{rank = same; "1
+(4,7)"; "6
+(8,9)"; "7
+(12,15)"; };
+{rank = same; "4
+(5,6)"; "8
+(13,14)"; };
+{rank = same; };
+{rank = same; "9
+(19,20)"; };
+{rank = same; };
+"0
+(1,18)"->"2
+(2,17)"[label="5" color = "green"];
+"2
+(2,17)"->"5
+(3,10)"[label="3" color = "green"];
+"2
+(2,17)"->"3
+(11,16)"[label="2" color = "green"];
+"5
+(3,10)"->"1
+(4,7)"[label="5" color = "green"];
+"5
+(3,10)"->"6
+(8,9)"[label="3" color = "green"];
+"3
+(11,16)"->"7
+(12,15)"[label="3" color = "green"];
+"1
+(4,7)"->"4
+(5,6)"[label="4" color = "green"];
+"6
+(8,9)"
+"7
+(12,15)"->"8
+(13,14)"[label="9" color = "green"];
+"7
+(12,15)"->"3
+(11,16)"[label="7" color = "red" style = "dashed"];
+"7
+(12,15)"->"5
+(3,10)"[label="4" color = "orange" style = "dashed"];
+"4
+(5,6)"->"5
+(3,10)"[label="8" color = "red" style = "dashed"];
+"8
+(13,14)"->"7
+(12,15)"[label="2" color = "red" style = "dashed"];
+"9
+(19,20)"->"8
+(13,14)"[label="3" color = "orange" style = "dashed"];
+}

@@ -1,0 +1,118 @@
+Execution started at: Thu Oct 28 15:13:51 2021
+
+Mode selection
+
+Entered Build mode
+
+Creating new graph (input file name- Testcases/Random/15/15/randomInput0.txt)
+Printing graph with file Name- pp0.png
+Graphviz file can be found with file name- pp0.gv
+
+Exited Build mode
+
+Mode selection
+
+Entered Operations mode
+
+
+Finding minimal graph
+Order-
+0 13 4 9 1 2 6 14 3 5 7 8 10 11 12 
+
+0 -> 13 Tree Edge
+13 -> 4 Tree Edge
+4 -> 9 Tree Edge
+0 -> 9 Forward Edge
+1 -> 4 Cross Edge
+2 -> 6 Tree Edge
+6 -> 0 Cross Edge
+2 -> 14 Tree Edge
+14 -> 1 Cross Edge
+2 -> 13 Cross Edge
+3 -> 9 Cross Edge
+7 -> 6 Cross Edge
+11 -> 6 Cross Edge
+11 -> 13 Cross Edge
+12 -> 6 Cross Edge
+Printing graph of edge classifications with file Name- pp1.png
+Graphviz file can be found with file name- pp1.gv
+9 
+4 
+13 
+0 
+1 
+6 
+14 
+2 
+3 
+5 
+7 
+8 
+10 
+11 
+12 
+Printing strongly connected components graph with file Name- pp2.png
+Graphviz file can be found with file name- pp2.gv
+Printing directed acyclic graph with file Name- pp3.png
+Graphviz file can be found with file name- pp3.gv
+Printing minimal graph with file Name- pp4.png
+Graphviz file can be found with file name- pp4.gv
+Replaced original graph with minimal graph
+
+DFS
+Order-
+0 13 4 9 1 2 6 14 3 5 7 8 10 11 12 
+
+0 -> 13 Tree Edge
+13 -> 4 Tree Edge
+4 -> 9 Tree Edge
+1 -> 4 Cross Edge
+2 -> 6 Tree Edge
+6 -> 0 Cross Edge
+2 -> 14 Tree Edge
+14 -> 1 Cross Edge
+2 -> 13 Cross Edge
+3 -> 9 Cross Edge
+7 -> 6 Cross Edge
+11 -> 6 Cross Edge
+11 -> 13 Cross Edge
+12 -> 6 Cross Edge
+Printing graph with file Name- pp5.png
+Graphviz file can be found with file name- pp5.gv
+
+Running Tarjan's Algorithm
+9 
+4 
+13 
+0 
+1 
+6 
+14 
+2 
+3 
+5 
+7 
+8 
+10 
+11 
+12 
+Printing graph with file Name- pp6.png
+Graphviz file can be found with file name- pp6.gv
+
+Running Dijkstra's Algorithm with source 2
+Costs-
+96 49 0 1000000000 127 1000000000 41 1000000000 1000000000 215 1000000000 1000000000 1000000000 94 7 
+Parents-
+6 14 -1 -1 1 -1 2 -1 -1 4 -1 -1 -1 2 2 
+Printing graph with file Name- pp7.png
+Graphviz file can be found with file name- pp7.gv
+
+Exited Operations mode
+
+Mode selection
+
+
+Quit
+
+Execution ended at: Thu Oct 28 15:14:21 2021
+

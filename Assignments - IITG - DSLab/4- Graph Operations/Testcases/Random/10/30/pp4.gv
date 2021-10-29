@@ -1,0 +1,30 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 1; };
+{rank = same; 2; };
+{rank = same; 3; };
+{rank = same; 8; };
+{rank = same; 4; };
+{rank = same; 7; };
+{rank = same; 5; };
+{rank = same; 9; };
+{rank = same; };
+{rank = same; 6; };
+{rank = same; };
+0
+1
+2->3[label="26"];
+2->1[label="81"];
+3->8[label="89"];
+8->4[label="9"];
+4->7[label="54"];
+4->3[label="61"];
+7->5[label="66"];
+7->1[label="29"];
+7->0[label="77"];
+5->9[label="59"];
+9->4[label="98"];
+6->2[label="83"];
+}

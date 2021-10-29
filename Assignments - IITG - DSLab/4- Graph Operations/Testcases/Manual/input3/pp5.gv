@@ -1,0 +1,62 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,20)"; };
+{rank = same; "1
+(2,17)"; "3
+(18,19)"; };
+{rank = same; "2
+(3,4)"; "4
+(5,16)"; };
+{rank = same; "5
+(6,15)"; };
+{rank = same; "6
+(7,8)"; "7
+(9,10)"; "8
+(11,12)"; "9
+(13,14)"; };
+{rank = same; };
+"0
+(1,20)"->"1
+(2,17)"[label="6" color = "green"];
+"0
+(1,20)"->"3
+(18,19)"[label="3" color = "green"];
+"1
+(2,17)"->"2
+(3,4)"[label="4" color = "green"];
+"1
+(2,17)"->"4
+(5,16)"[label="2" color = "green"];
+"3
+(18,19)"->"2
+(3,4)"[label="6" color = "orange" style = "dashed"];
+"2
+(3,4)"->"0
+(1,20)"[label="4" color = "red" style = "dashed"];
+"4
+(5,16)"->"5
+(6,15)"[label="5" color = "green"];
+"5
+(6,15)"->"6
+(7,8)"[label="3" color = "green"];
+"5
+(6,15)"->"7
+(9,10)"[label="4" color = "green"];
+"5
+(6,15)"->"8
+(11,12)"[label="2" color = "green"];
+"5
+(6,15)"->"9
+(13,14)"[label="5" color = "green"];
+"6
+(7,8)"->"4
+(5,16)"[label="8" color = "red" style = "dashed"];
+"7
+(9,10)"
+"8
+(11,12)"
+"9
+(13,14)"
+}

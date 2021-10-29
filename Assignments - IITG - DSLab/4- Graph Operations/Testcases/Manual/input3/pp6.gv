@@ -1,0 +1,35 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 1; 3; };
+{rank = same; 2; 4; };
+{rank = same; 5; };
+{rank = same; 6; 7; 8; 9; };
+{rank = same; };
+7 [color = "red"];
+8 [color = "blue"];
+9 [color = "green"];
+6 [color = "yellow"];
+5 [color = "yellow"];
+4 [color = "yellow"];
+3 [color = "magenta"];
+2 [color = "magenta"];
+1 [color = "magenta"];
+0 [color = "magenta"];
+0->1[label="6" color = "magenta"];
+0->3[label="3" color = "magenta"];
+1->2[label="4" color = "magenta"];
+1->4[label="2" color = "grey" style = "dashed"];
+3->2[label="6" color = "magenta"];
+2->0[label="4" color = "magenta"];
+4->5[label="5" color = "yellow"];
+5->6[label="3" color = "yellow"];
+5->7[label="4" color = "grey" style = "dashed"];
+5->8[label="2" color = "grey" style = "dashed"];
+5->9[label="5" color = "grey" style = "dashed"];
+6->4[label="8" color = "yellow"];
+7
+8
+9
+}

@@ -1,0 +1,27 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,8)"; };
+{rank = same; "1
+(2,5)"; "2
+(6,7)"; };
+{rank = same; "3
+(3,4)"; };
+{rank = same; };
+"0
+(1,8)"->"1
+(2,5)"[label="5" color = "green"];
+"0
+(1,8)"->"2
+(6,7)"[label="4" color = "green"];
+"1
+(2,5)"->"3
+(3,4)"[label="8" color = "green"];
+"2
+(6,7)"->"1
+(2,5)"[label="3" color = "orange" style = "dashed"];
+"3
+(3,4)"->"0
+(1,8)"[label="5" color = "red" style = "dashed"];
+}

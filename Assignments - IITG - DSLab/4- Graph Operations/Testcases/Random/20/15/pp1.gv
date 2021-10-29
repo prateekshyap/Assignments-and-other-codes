@@ -1,0 +1,134 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,26)"; };
+{rank = same; "14
+(2,25)"; };
+{rank = same; "13
+(3,24)"; "15
+(9,16)"; };
+{rank = same; "6
+(4,23)"; "18
+(10,15)"; };
+{rank = same; "9
+(5,6)"; "11
+(7,8)"; "7
+(17,20)"; "12
+(21,22)"; "3
+(12,13)"; "16
+(11,14)"; };
+{rank = same; "17
+(18,19)"; };
+{rank = same; "1
+(27,28)"; };
+{rank = same; "2
+(29,34)"; };
+{rank = same; "10
+(30,33)"; };
+{rank = same; "5
+(31,32)"; };
+{rank = same; };
+{rank = same; "4
+(35,36)"; };
+{rank = same; };
+{rank = same; "8
+(37,38)"; };
+{rank = same; "19
+(39,40)"; };
+{rank = same; };
+"0
+(1,26)"->"14
+(2,25)"[label="7" color = "green"];
+"0
+(1,26)"->"14
+(2,25)"[label="47" color = "green"];
+"14
+(2,25)"->"13
+(3,24)"[label="21" color = "green"];
+"14
+(2,25)"->"15
+(9,16)"[label="3" color = "blue" style = "dashed"];
+"13
+(3,24)"->"6
+(4,23)"[label="50" color = "green"];
+"15
+(9,16)"->"13
+(3,24)"[label="45" color = "red" style = "dashed"];
+"15
+(9,16)"->"18
+(10,15)"[label="20" color = "green"];
+"15
+(9,16)"->"13
+(3,24)"[label="62" color = "red" style = "dashed"];
+"6
+(4,23)"->"9
+(5,6)"[label="69" color = "green"];
+"6
+(4,23)"->"11
+(7,8)"[label="86" color = "green"];
+"6
+(4,23)"->"15
+(9,16)"[label="99" color = "green"];
+"6
+(4,23)"->"7
+(17,20)"[label="93" color = "green"];
+"6
+(4,23)"->"12
+(21,22)"[label="42" color = "green"];
+"6
+(4,23)"->"3
+(12,13)"[label="55" color = "blue" style = "dashed"];
+"18
+(10,15)"->"16
+(11,14)"[label="99" color = "green"];
+"9
+(5,6)"
+"11
+(7,8)"
+"7
+(17,20)"->"17
+(18,19)"[label="97" color = "green"];
+"12
+(21,22)"->"6
+(4,23)"[label="95" color = "red" style = "dashed"];
+"3
+(12,13)"->"11
+(7,8)"[label="57" color = "orange" style = "dashed"];
+"16
+(11,14)"->"14
+(2,25)"[label="97" color = "red" style = "dashed"];
+"16
+(11,14)"->"3
+(12,13)"[label="34" color = "green"];
+"16
+(11,14)"->"0
+(1,26)"[label="14" color = "red" style = "dashed"];
+"17
+(18,19)"
+"1
+(27,28)"
+"2
+(29,34)"->"18
+(10,15)"[label="63" color = "orange" style = "dashed"];
+"2
+(29,34)"->"10
+(30,33)"[label="54" color = "green"];
+"10
+(30,33)"->"5
+(31,32)"[label="29" color = "green"];
+"10
+(30,33)"->"12
+(21,22)"[label="42" color = "orange" style = "dashed"];
+"5
+(31,32)"->"3
+(12,13)"[label="27" color = "orange" style = "dashed"];
+"4
+(35,36)"->"10
+(30,33)"[label="53" color = "orange" style = "dashed"];
+"8
+(37,38)"
+"19
+(39,40)"->"1
+(27,28)"[label="32" color = "orange" style = "dashed"];
+}

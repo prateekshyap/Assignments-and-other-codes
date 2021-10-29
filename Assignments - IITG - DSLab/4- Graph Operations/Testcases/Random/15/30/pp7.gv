@@ -1,0 +1,36 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,0)"; };
+{rank = same; "(6,16)"; "(11,48)"; "(2,86)"; "(14,91)"; };
+{rank = same; "(7,108)"; "(3,96)"; "(10,95)"; };
+{rank = same; "(9,136)"; "(5,164)"; "(13,157)"; "(12,177)"; };
+{rank = same; };
+{rank = same; "(1,inf)"; };
+{rank = same; };
+{rank = same; "(4,inf)"; };
+{rank = same; };
+{rank = same; "(8,inf)"; };
+{rank = same; };
+"(0,0)"->"(6,16)"[label="16" color = "blue"];
+"(0,0)"->"(11,48)"[label="48" color = "blue"];
+"(0,0)"->"(2,86)"[label="86" color = "blue"];
+"(0,0)"->"(14,91)"[label="91" color = "blue"];
+"(6,16)"->"(7,108)"[label="92" color = "blue"];
+"(11,48)"->"(3,96)"[label="48" color = "blue"];
+"(2,86)"->"(10,95)"[label="75" color = "red" style = "dashed" ];
+"(14,91)"->"(10,95)"[label="4" color = "blue"];
+"(7,108)"->"(9,136)"[label="28" color = "blue"];
+"(7,108)"->"(0,0)"[label="56" color = "red" style = "dashed" ];
+"(3,96)"->"(5,164)"[label="68" color = "blue"];
+"(3,96)"->"(13,157)"[label="61" color = "blue"];
+"(10,95)"->"(12,177)"[label="82" color = "blue"];
+"(9,136)"->"(3,96)"[label="88" color = "red" style = "dashed" ];
+"(5,164)"->"(7,108)"[label="58" color = "red" style = "dashed" ];
+"(13,157)"->"(7,108)"[label="13" color = "red" style = "dashed" ];
+"(12,177)"
+"(1,inf)"->"(6,16)"[label="31" color = "red" style = "dashed" ];
+"(1,inf)"->"(12,177)"[label="72" color = "red" style = "dashed" ];
+"(4,inf)"->"(14,91)"[label="50" color = "red" style = "dashed" ];
+"(8,inf)"->"(13,157)"[label="29" color = "red" style = "dashed" ];
+}

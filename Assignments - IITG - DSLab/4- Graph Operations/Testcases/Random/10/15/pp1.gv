@@ -1,0 +1,54 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,4)"; };
+{rank = same; "6
+(2,3)"; };
+{rank = same; "1
+(5,6)"; };
+{rank = same; "2
+(7,8)"; };
+{rank = same; "3
+(9,12)"; };
+{rank = same; "5
+(10,11)"; };
+{rank = same; };
+{rank = same; "4
+(13,14)"; };
+{rank = same; };
+{rank = same; "7
+(15,16)"; };
+{rank = same; };
+{rank = same; "8
+(17,18)"; };
+{rank = same; "9
+(19,20)"; };
+{rank = same; };
+"0
+(1,4)"->"6
+(2,3)"[label="62" color = "green"];
+"6
+(2,3)"
+"1
+(5,6)"
+"2
+(7,8)"
+"3
+(9,12)"->"5
+(10,11)"[label="92" color = "green"];
+"5
+(10,11)"->"6
+(2,3)"[label="16" color = "orange" style = "dashed"];
+"4
+(13,14)"->"4
+(13,14)"[label="3" color = "red" style = "dashed"];
+"7
+(15,16)"->"3
+(9,12)"[label="89" color = "orange" style = "dashed"];
+"8
+(17,18)"
+"9
+(19,20)"->"9
+(19,20)"[label="60" color = "red" style = "dashed"];
+}

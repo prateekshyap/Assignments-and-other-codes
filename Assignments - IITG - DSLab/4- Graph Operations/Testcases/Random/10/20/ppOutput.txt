@@ -1,0 +1,106 @@
+Execution started at: Wed Oct 27 23:58:35 2021
+
+Mode selection
+
+Entered Build mode
+
+Creating new graph (input file name- randomInput0.txt)
+Printing graph with file Name- pp0.png
+Graphviz file can be found with file name- pp0.gv
+
+Exited Build mode
+
+Mode selection
+
+Entered Operations mode
+
+
+Finding minimal graph
+Order-
+0 1 5 7 3 2 4 6 8 9 
+
+1 -> 5 Tree Edge
+1 -> 7 Tree Edge
+7 -> 5 Cross Edge
+7 -> 3 Tree Edge
+4 -> 3 Cross Edge
+6 -> 8 Tree Edge
+6 -> 4 Cross Edge
+6 -> 2 Cross Edge
+9 -> 2 Cross Edge
+Printing graph of edge classifications with file Name- pp1.png
+Graphviz file can be found with file name- pp1.gv
+0 
+5 
+3 
+7 
+1 
+2 
+4 
+8 
+6 
+9 
+Printing strongly connected components graph with file Name- pp2.png
+Graphviz file can be found with file name- pp2.gv
+Printing directed acyclic graph with file Name- pp3.png
+Graphviz file can be found with file name- pp3.gv
+Printing minimal graph with file Name- pp4.png
+Graphviz file can be found with file name- pp4.gv
+Replaced original graph with minimal graph
+
+Exited Operations mode
+
+Mode selection
+
+Mode selection
+
+Entered Operations mode
+
+
+DFS
+Order-
+0 1 5 7 3 2 4 6 8 9 
+
+1 -> 5 Tree Edge
+1 -> 7 Tree Edge
+7 -> 5 Cross Edge
+7 -> 3 Tree Edge
+4 -> 3 Cross Edge
+6 -> 8 Tree Edge
+6 -> 4 Cross Edge
+6 -> 2 Cross Edge
+9 -> 2 Cross Edge
+Printing graph with file Name- pp5.png
+Graphviz file can be found with file name- pp5.gv
+
+Running Tarjan's Algorithm
+0 
+5 
+3 
+7 
+1 
+2 
+4 
+8 
+6 
+9 
+Printing graph with file Name- pp6.png
+Graphviz file can be found with file name- pp6.gv
+
+Running Dijkstra's Algorithm with source 8
+Costs-
+1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 0 1000000000 
+Parents-
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
+Printing graph with file Name- pp7.png
+Graphviz file can be found with file name- pp7.gv
+
+Exited Operations mode
+
+Mode selection
+
+
+Quit
+
+Execution ended at: Wed Oct 27 23:59:46 2021
+

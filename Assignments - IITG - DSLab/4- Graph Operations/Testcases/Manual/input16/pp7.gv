@@ -1,0 +1,13 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,0)"; };
+{rank = same; "(1,1)"; };
+{rank = same; "(2,2)"; };
+{rank = same; "(3,3)"; };
+{rank = same; };
+"(0,0)"->"(1,1)"[label="1" color = "blue"];
+"(1,1)"->"(2,2)"[label="1" color = "blue"];
+"(2,2)"->"(3,3)"[label="1" color = "blue"];
+"(3,3)"->"(0,0)"[label="1" color = "red" style = "dashed" ];
+}

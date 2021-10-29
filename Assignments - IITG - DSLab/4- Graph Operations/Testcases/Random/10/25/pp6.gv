@@ -1,0 +1,39 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; 0; };
+{rank = same; 1; };
+{rank = same; 5; };
+{rank = same; 2; };
+{rank = same; 3; };
+{rank = same; 8; };
+{rank = same; 4; };
+{rank = same; 6; };
+{rank = same; };
+{rank = same; 7; };
+{rank = same; 9; };
+{rank = same; };
+0 [color = "red"];
+5 [color = "blue"];
+1 [color = "green"];
+2 [color = "yellow"];
+8 [color = "magenta"];
+3 [color = "aqua"];
+6 [color = "brown"];
+4 [color = "crimson"];
+9 [color = "coral"];
+7 [color = "darkgoldenrod"];
+0
+1->5[label="52" color = "grey" style = "dashed"];
+5
+2
+3->8[label="50" color = "grey" style = "dashed"];
+8
+4->8[label="18" color = "grey" style = "dashed"];
+4->6[label="2" color = "grey" style = "dashed"];
+4->2[label="50" color = "grey" style = "dashed"];
+6->1[label="28" color = "grey" style = "dashed"];
+7->9[label="20" color = "grey" style = "dashed"];
+7->2[label="74" color = "grey" style = "dashed"];
+9->8[label="26" color = "grey" style = "dashed"];
+}

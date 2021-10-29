@@ -1,0 +1,62 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,2)"; };
+{rank = same; "1
+(3,10)"; };
+{rank = same; "5
+(4,5)"; "7
+(6,9)"; };
+{rank = same; "3
+(7,8)"; };
+{rank = same; "2
+(11,12)"; };
+{rank = same; "4
+(13,14)"; };
+{rank = same; };
+{rank = same; "6
+(15,18)"; };
+{rank = same; "8
+(16,17)"; };
+{rank = same; "9
+(19,20)"; };
+{rank = same; };
+"0
+(1,2)"
+"1
+(3,10)"->"5
+(4,5)"[label="38" color = "green"];
+"1
+(3,10)"->"7
+(6,9)"[label="36" color = "green"];
+"5
+(4,5)"
+"7
+(6,9)"->"5
+(4,5)"[label="85" color = "orange" style = "dashed"];
+"7
+(6,9)"->"3
+(7,8)"[label="28" color = "green"];
+"3
+(7,8)"
+"2
+(11,12)"
+"4
+(13,14)"->"3
+(7,8)"[label="32" color = "orange" style = "dashed"];
+"6
+(15,18)"->"8
+(16,17)"[label="60" color = "green"];
+"6
+(15,18)"->"4
+(13,14)"[label="10" color = "orange" style = "dashed"];
+"6
+(15,18)"->"2
+(11,12)"[label="50" color = "orange" style = "dashed"];
+"8
+(16,17)"
+"9
+(19,20)"->"2
+(11,12)"[label="40" color = "orange" style = "dashed"];
+}

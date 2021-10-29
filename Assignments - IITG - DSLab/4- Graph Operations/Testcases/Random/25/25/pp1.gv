@@ -1,0 +1,266 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "0
+(1,48)"; };
+{rank = same; "9
+(2,47)"; "4
+(4,45)"; "2
+(16,17)"; };
+{rank = same; "24
+(3,46)"; "11
+(5,44)"; "12
+(10,25)"; "10
+(6,43)"; };
+{rank = same; "13
+(19,20)"; "19
+(11,22)"; "20
+(15,18)"; "22
+(23,24)"; "3
+(7,38)"; "18
+(39,42)"; "21
+(26,27)"; };
+{rank = same; "5
+(12,21)"; "1
+(8,9)"; "15
+(28,37)"; "17
+(40,41)"; };
+{rank = same; "16
+(13,14)"; "23
+(29,32)"; "14
+(33,36)"; };
+{rank = same; "8
+(30,31)"; "6
+(34,35)"; };
+{rank = same; };
+{rank = same; "7
+(49,50)"; };
+{rank = same; };
+"0
+(1,48)"->"9
+(2,47)"[label="62" color = "green"];
+"0
+(1,48)"->"4
+(4,45)"[label="39" color = "blue" style = "dashed"];
+"0
+(1,48)"->"2
+(16,17)"[label="96" color = "blue" style = "dashed"];
+"9
+(2,47)"->"24
+(3,46)"[label="98" color = "green"];
+"4
+(4,45)"->"11
+(5,44)"[label="17" color = "green"];
+"4
+(4,45)"->"4
+(4,45)"[label="19" color = "red" style = "dashed"];
+"2
+(16,17)"->"2
+(16,17)"[label="28" color = "red" style = "dashed"];
+"2
+(16,17)"->"12
+(10,25)"[label="8" color = "red" style = "dashed"];
+"2
+(16,17)"->"10
+(6,43)"[label="5" color = "red" style = "dashed"];
+"2
+(16,17)"->"4
+(4,45)"[label="73" color = "red" style = "dashed"];
+"24
+(3,46)"->"4
+(4,45)"[label="93" color = "green"];
+"24
+(3,46)"->"13
+(19,20)"[label="24" color = "blue" style = "dashed"];
+"24
+(3,46)"->"2
+(16,17)"[label="73" color = "blue" style = "dashed"];
+"24
+(3,46)"->"10
+(6,43)"[label="27" color = "blue" style = "dashed"];
+"11
+(5,44)"->"10
+(6,43)"[label="15" color = "green"];
+"11
+(5,44)"->"24
+(3,46)"[label="16" color = "red" style = "dashed"];
+"12
+(10,25)"->"19
+(11,22)"[label="71" color = "green"];
+"12
+(10,25)"->"20
+(15,18)"[label="62" color = "blue" style = "dashed"];
+"12
+(10,25)"->"12
+(10,25)"[label="20" color = "red" style = "dashed"];
+"12
+(10,25)"->"9
+(2,47)"[label="15" color = "red" style = "dashed"];
+"12
+(10,25)"->"22
+(23,24)"[label="83" color = "green"];
+"10
+(6,43)"->"11
+(5,44)"[label="40" color = "red" style = "dashed"];
+"10
+(6,43)"->"0
+(1,48)"[label="58" color = "red" style = "dashed"];
+"10
+(6,43)"->"3
+(7,38)"[label="12" color = "green"];
+"10
+(6,43)"->"24
+(3,46)"[label="51" color = "red" style = "dashed"];
+"10
+(6,43)"->"20
+(15,18)"[label="41" color = "blue" style = "dashed"];
+"10
+(6,43)"->"18
+(39,42)"[label="18" color = "green"];
+"10
+(6,43)"->"21
+(26,27)"[label="39" color = "blue" style = "dashed"];
+"10
+(6,43)"->"11
+(5,44)"[label="56" color = "red" style = "dashed"];
+"13
+(19,20)"->"11
+(5,44)"[label="88" color = "red" style = "dashed"];
+"13
+(19,20)"->"13
+(19,20)"[label="74" color = "red" style = "dashed"];
+"13
+(19,20)"->"24
+(3,46)"[label="32" color = "red" style = "dashed"];
+"19
+(11,22)"->"3
+(7,38)"[label="31" color = "red" style = "dashed"];
+"19
+(11,22)"->"5
+(12,21)"[label="66" color = "green"];
+"20
+(15,18)"->"2
+(16,17)"[label="70" color = "green"];
+"22
+(23,24)"->"3
+(7,38)"[label="19" color = "red" style = "dashed"];
+"22
+(23,24)"->"0
+(1,48)"[label="30" color = "red" style = "dashed"];
+"3
+(7,38)"->"10
+(6,43)"[label="80" color = "red" style = "dashed"];
+"3
+(7,38)"->"1
+(8,9)"[label="7" color = "green"];
+"3
+(7,38)"->"12
+(10,25)"[label="91" color = "green"];
+"3
+(7,38)"->"21
+(26,27)"[label="66" color = "green"];
+"3
+(7,38)"->"1
+(8,9)"[label="17" color = "green"];
+"3
+(7,38)"->"15
+(28,37)"[label="60" color = "green"];
+"18
+(39,42)"->"3
+(7,38)"[label="91" color = "orange" style = "dashed"];
+"18
+(39,42)"->"3
+(7,38)"[label="96" color = "orange" style = "dashed"];
+"18
+(39,42)"->"24
+(3,46)"[label="97" color = "red" style = "dashed"];
+"18
+(39,42)"->"17
+(40,41)"[label="24" color = "green"];
+"18
+(39,42)"->"15
+(28,37)"[label="64" color = "orange" style = "dashed"];
+"21
+(26,27)"->"20
+(15,18)"[label="69" color = "orange" style = "dashed"];
+"21
+(26,27)"->"24
+(3,46)"[label="38" color = "red" style = "dashed"];
+"5
+(12,21)"->"4
+(4,45)"[label="75" color = "red" style = "dashed"];
+"5
+(12,21)"->"16
+(13,14)"[label="70" color = "green"];
+"5
+(12,21)"->"20
+(15,18)"[label="11" color = "green"];
+"5
+(12,21)"->"13
+(19,20)"[label="68" color = "green"];
+"1
+(8,9)"->"24
+(3,46)"[label="59" color = "red" style = "dashed"];
+"1
+(8,9)"->"11
+(5,44)"[label="44" color = "red" style = "dashed"];
+"1
+(8,9)"->"9
+(2,47)"[label="52" color = "red" style = "dashed"];
+"15
+(28,37)"->"15
+(28,37)"[label="29" color = "red" style = "dashed"];
+"15
+(28,37)"->"19
+(11,22)"[label="94" color = "orange" style = "dashed"];
+"15
+(28,37)"->"11
+(5,44)"[label="100" color = "red" style = "dashed"];
+"15
+(28,37)"->"23
+(29,32)"[label="61" color = "green"];
+"15
+(28,37)"->"10
+(6,43)"[label="65" color = "red" style = "dashed"];
+"15
+(28,37)"->"22
+(23,24)"[label="68" color = "orange" style = "dashed"];
+"15
+(28,37)"->"14
+(33,36)"[label="52" color = "green"];
+"17
+(40,41)"->"15
+(28,37)"[label="80" color = "orange" style = "dashed"];
+"17
+(40,41)"->"15
+(28,37)"[label="72" color = "orange" style = "dashed"];
+"17
+(40,41)"->"20
+(15,18)"[label="78" color = "orange" style = "dashed"];
+"16
+(13,14)"
+"23
+(29,32)"->"8
+(30,31)"[label="58" color = "green"];
+"14
+(33,36)"->"6
+(34,35)"[label="43" color = "green"];
+"14
+(33,36)"->"3
+(7,38)"[label="64" color = "red" style = "dashed"];
+"8
+(30,31)"->"24
+(3,46)"[label="66" color = "red" style = "dashed"];
+"6
+(34,35)"->"23
+(29,32)"[label="74" color = "orange" style = "dashed"];
+"6
+(34,35)"->"14
+(33,36)"[label="53" color = "red" style = "dashed"];
+"7
+(49,50)"->"4
+(4,45)"[label="23" color = "orange" style = "dashed"];
+"7
+(49,50)"->"16
+(13,14)"[label="87" color = "orange" style = "dashed"];
+}

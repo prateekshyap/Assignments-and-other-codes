@@ -1,0 +1,30 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,77)"; };
+{rank = same; "(1,29)"; };
+{rank = same; "(2,inf)"; };
+{rank = same; "(3,284)"; };
+{rank = same; "(8,373)"; };
+{rank = same; "(4,223)"; };
+{rank = same; "(7,0)"; };
+{rank = same; "(5,66)"; };
+{rank = same; "(9,125)"; };
+{rank = same; };
+{rank = same; "(6,inf)"; };
+{rank = same; };
+"(0,77)"
+"(1,29)"
+"(2,inf)"->"(3,284)"[label="26" color = "red" style = "dashed" ];
+"(2,inf)"->"(1,29)"[label="81" color = "red" style = "dashed" ];
+"(3,284)"->"(8,373)"[label="89" color = "blue"];
+"(8,373)"->"(4,223)"[label="9" color = "red" style = "dashed" ];
+"(4,223)"->"(7,0)"[label="54" color = "red" style = "dashed" ];
+"(4,223)"->"(3,284)"[label="61" color = "blue"];
+"(7,0)"->"(5,66)"[label="66" color = "blue"];
+"(7,0)"->"(1,29)"[label="29" color = "blue"];
+"(7,0)"->"(0,77)"[label="77" color = "blue"];
+"(5,66)"->"(9,125)"[label="59" color = "blue"];
+"(9,125)"->"(4,223)"[label="98" color = "blue"];
+"(6,inf)"->"(2,inf)"[label="83" color = "red" style = "dashed" ];
+}

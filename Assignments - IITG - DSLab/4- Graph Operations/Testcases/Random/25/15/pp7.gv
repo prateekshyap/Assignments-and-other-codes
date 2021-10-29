@@ -1,0 +1,58 @@
+digraph G {
+ranksep = "equally";
+rankdir = LR;
+{rank = same; "(0,459)"; };
+{rank = same; "(6,495)"; };
+{rank = same; "(2,121)"; "(14,0)"; };
+{rank = same; "(12,142)"; "(3,76)"; };
+{rank = same; "(15,226)"; "(22,85)"; };
+{rank = same; "(1,160)"; "(23,86)"; "(5,174)"; };
+{rank = same; "(8,250)"; "(10,244)"; };
+{rank = same; "(21,309)"; "(9,348)"; "(17,301)"; };
+{rank = same; "(7,368)"; };
+{rank = same; "(4,445)"; };
+{rank = same; };
+{rank = same; "(11,inf)"; };
+{rank = same; "(24,inf)"; };
+{rank = same; };
+{rank = same; "(13,inf)"; };
+{rank = same; };
+{rank = same; "(16,inf)"; };
+{rank = same; "(18,inf)"; };
+{rank = same; "(19,inf)"; };
+{rank = same; "(20,inf)"; };
+{rank = same; };
+"(0,459)"->"(6,495)"[label="36" color = "blue"];
+"(6,495)"->"(2,121)"[label="52" color = "red" style = "dashed" ];
+"(6,495)"->"(14,0)"[label="18" color = "red" style = "dashed" ];
+"(2,121)"->"(12,142)"[label="21" color = "blue"];
+"(14,0)"->"(3,76)"[label="76" color = "blue"];
+"(12,142)"->"(15,226)"[label="84" color = "blue"];
+"(3,76)"->"(22,85)"[label="9" color = "blue"];
+"(15,226)"->"(3,76)"[label="10" color = "red" style = "dashed" ];
+"(22,85)"->"(1,160)"[label="75" color = "blue"];
+"(22,85)"->"(23,86)"[label="1" color = "blue"];
+"(22,85)"->"(5,174)"[label="89" color = "blue"];
+"(1,160)"->"(2,121)"[label="81" color = "red" style = "dashed" ];
+"(23,86)"->"(2,121)"[label="35" color = "blue"];
+"(5,174)"->"(8,250)"[label="76" color = "blue"];
+"(5,174)"->"(10,244)"[label="70" color = "blue"];
+"(8,250)"->"(21,309)"[label="59" color = "blue"];
+"(8,250)"->"(9,348)"[label="98" color = "blue"];
+"(8,250)"->"(17,301)"[label="51" color = "blue"];
+"(10,244)"
+"(21,309)"->"(7,368)"[label="59" color = "blue"];
+"(9,348)"
+"(17,301)"
+"(7,368)"->"(4,445)"[label="77" color = "blue"];
+"(4,445)"->"(23,86)"[label="47" color = "red" style = "dashed" ];
+"(4,445)"->"(0,459)"[label="14" color = "blue"];
+"(11,inf)"->"(24,inf)"[label="4" color = "red" style = "dashed" ];
+"(24,inf)"->"(3,76)"[label="23" color = "red" style = "dashed" ];
+"(13,inf)"->"(4,445)"[label="87" color = "red" style = "dashed" ];
+"(16,inf)"
+"(18,inf)"
+"(19,inf)"
+"(20,inf)"->"(13,inf)"[label="48" color = "red" style = "dashed" ];
+"(20,inf)"->"(5,174)"[label="37" color = "red" style = "dashed" ];
+}
